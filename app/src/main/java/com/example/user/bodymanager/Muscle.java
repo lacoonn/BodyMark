@@ -6,7 +6,7 @@ package com.example.user.bodymanager;
 public class Muscle{
 
     private String name;
-    private int damage;
+    private int damage; //0~510
     private int resource_num;
 
     public Muscle(String name)  //근육 object 생성

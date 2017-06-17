@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -78,11 +79,11 @@ public class BodygraphActivity extends Activity {
     public void createBMP()    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
     {
         Variables v = (Variables) getApplication();
-        Muscle[] m = new Muscle[v.getMuscles().length];
+        Muscle[] m = v.getMuscles();
 
         Bitmap bmIn;
         for (int i = 0; i < m.length; ++i) {
-            bmIn = BitmapFactory.decodeResource(getResources(), bodygraphDrawable[i]);
+            bmIn = BitmapFactory.decodeResource(getResources(), m[i].getResource_num());
 
 
             // get image size
@@ -106,34 +107,60 @@ public class BodygraphActivity extends Activity {
                     G = Color.green(pixel);
                     B = Color.blue(pixel);
 
-                    //흰색의 색상을 바꿔준다.
-                    if (R == 255 && G == 255 && B == 255) {
-                        // round-off color offset
-                        R = ((R + (m[i].getDamage() / 2)) - ((R + (m[i].getDamage()/ 2)) % m[i].getDamage()) - 1);
-                        if (R < 0) {
-                            R = 0;
-                        }
-                        G = 255 - R;
-                        if (G < 0) {
-                            G = 0;
-                        }
-                        B = 100;
+                    if(R==0&&G==0&&B==0)
+                        continue;
+
+                    // round-off color offset
+                    if(m[i].getDamage()<255) {
+                        R = m[i].getDamage();
+                        G = 255;
+                    }
+                    else{
+                        R=255;
+                        G=255-m[i].getDamage();
+                    }
+                        B = 0;
 
                         // set pixel color to output bitmap
                         bmOut.setPixel(x, y, Color.argb(A, R, G, B));
-                    }
                 }
             }
 
             //save to SDcard
+            FileOutputStream out=null;
             try {
-                FileOutputStream outf = new FileOutputStream(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+m[i].getName());
-                bmOut.compress(Bitmap.CompressFormat.PNG, 100, outf);
-                outf.flush();
-                outf.close();
+                //android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
+                //"/data/data/com.example.user.bodymanager/files/"
+                out = new FileOutputStream(m[i].getName());
+                bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+
             } catch (IOException e) {
                 e.printStackTrace();
+            }finally
+            {
+                    try {
+                        if(out!=null)
+                            out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
             }
         }
+    }
+
+    public boolean storageWritable()
+    {
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state))
+            return true;
+        return false;
+    }
+    public boolean storageReadable()
+    {
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state)||Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))
+            return true;
+        return false;
     }
 }
