@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="400dp"
+    android:layout_height="500dp"
     android:layout_gravity="center"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -24,7 +24,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:layout_margin="5dp">
 
         <LinearLayout
@@ -115,6 +115,34 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="나이"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp" />
+
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:background="@drawable/editbox"/>
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="age"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <Button

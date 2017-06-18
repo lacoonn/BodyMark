@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
+import android.content.Context;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -39,6 +42,23 @@ public class BodygraphActivity extends Activity {
             R.drawable.shoulders2_green,
             R.drawable.traps2_green,
             R.drawable.triceps_green        // backward 7
+    };
+    public static int bodygraphId[] = {
+            R.id.main_bodygraph_abs,
+            R.id.main_bodygraph_adductor,
+            R.id.main_bodygraph_biceps,
+            R.id.main_bodygraph_calves,
+            R.id.main_bodygraph_chest,
+            R.id.main_bodygraph_obliques,
+            R.id.main_bodygraph_quads,
+            R.id.main_bodygraph_shoulders,
+            R.id.main_bodygraph_traps,
+            R.id.main_bodygraph_calves2,
+            R.id.main_bodygraph_hamstrings,
+            R.id.main_bodygraph_lats,
+            R.id.main_bodygraph_shoulders2,
+            R.id.main_bodygraph_traps2,
+            R.id.main_bodygraph_triceps
     };
 
     @Override
@@ -76,15 +96,17 @@ public class BodygraphActivity extends Activity {
             }
         }
     }
-    public void createBMP()    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
+    public void createBMP(Context context)    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
     {
+
         Variables v = (Variables) getApplication();
         Muscle[] m = v.getMuscles();
 
+        ImageView img;
         Bitmap bmIn;
         for (int i = 0; i < m.length; ++i) {
-            bmIn = BitmapFactory.decodeResource(getResources(), m[i].getResource_num());
 
+            bmIn = BitmapFactory.decodeResource(getResources(), m[i].getResource_num());
 
             // get image size
             int width = bmIn.getWidth();
@@ -107,7 +129,7 @@ public class BodygraphActivity extends Activity {
                     G = Color.green(pixel);
                     B = Color.blue(pixel);
 
-                    if(R==0&&G==0&&B==0)
+                    if(R<=4 && G<=4 && B<=4)
                         continue;
 
                     // round-off color offset
@@ -117,7 +139,7 @@ public class BodygraphActivity extends Activity {
                     }
                     else{
                         R=255;
-                        G=255-m[i].getDamage();
+                        G=510-m[i].getDamage();
                     }
                         B = 0;
 
@@ -130,10 +152,13 @@ public class BodygraphActivity extends Activity {
             FileOutputStream out=null;
             try {
                 //android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
-                //"/data/data/com.example.user.bodymanager/files/"
-                out = new FileOutputStream(m[i].getName());
+                //"/data/data/com.example.user.bodymanager/files/"+ m[i].getName() + ".png"
+                //context.getFilesDir().getPath() + "/" + m[i].getName() + ".png"
+
+                out = context.openFileOutput(m[i].getName() + ".png", 0);
                 bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
+Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
                 e.printStackTrace();

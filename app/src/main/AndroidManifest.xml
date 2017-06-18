@@ -33,7 +33,6 @@
         <activity android:name=".ExerciseActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".BodygraphActivity" />
-        <activity android:name=".CalendarPopup" />
 
     </application>
 

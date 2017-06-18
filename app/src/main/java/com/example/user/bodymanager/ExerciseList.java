@@ -10,7 +10,7 @@ public class ExerciseList {
     private int year;
     private int month;
     private int day;
-    private ArrayList<Exercise> exercises;
+    private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 
     public ExerciseList(int _year, int _month, int _day) {
         year = _year;
@@ -45,10 +45,10 @@ public class ExerciseList {
     public int getIndexByName(String name) {
         // 해당하는 이름의 운동이 없으면 -1을 return
         for(int i = 0; ; i++) {
-            if(exercises.get(i).name == name)
+            if(exercises.get(i).getName() == name)
                 return i;
         }
-        return -1;
+  //      return  -1;
     }
 
     public void addExercise(Exercise exercise) {

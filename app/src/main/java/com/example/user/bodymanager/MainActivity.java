@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
-
+import android.content.Context;
 public class MainActivity extends BodygraphActivity {
 
     @Override
@@ -26,7 +26,7 @@ Variables v = (Variables) getApplication();
         m[1] = new Muscle("adductor_green");
         m[2] = new Muscle("biceps_green");
 
-        m[0].setDamage(50);
+        m[0].setDamage(150);
         m[1].setDamage(255);
         m[2].setDamage(455);
 
@@ -44,7 +44,7 @@ Variables v = (Variables) getApplication();
 
     //image view
         if(storageWritable()) {
-            createBMP();
+            createBMP(this);
             Toast.makeText(this, "storage Access Succeed", Toast.LENGTH_SHORT).show();
         }
         else if(storageReadable()) {
@@ -53,24 +53,19 @@ Variables v = (Variables) getApplication();
 
         if(storageReadable()) {
         for(int i=0 ; i < m.length ; ++i) {
-            File imgFile = new File(m[i].getName());
-            ImageView imgview;
-
-            if(imgFile.exists()){
+        ImageView imgview;
                 /*
                 Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());  //파일에서 읽어옴
                 ImageView myImage = (ImageView) findViewById(m[i].getResource_num());   //이미지 설정
                 myImage.setImageBitmap(myBitmap);   //읽어온 bitmap으로 이미지 변경
                 */
                 try{
-                    imgview = (ImageView)findViewById(m[i].getResource_num());
-                    String imgpath = "data/data/com.example.user.body/files/"+ m[i].getResource_num();
+                    imgview = (ImageView)findViewById(bodygraphId[i]);
+                    String imgpath = "data/user/0/com.example.user.bodymanager/files/" + m[i].getName() + ".png";
                     Bitmap bm = BitmapFactory.decodeFile(imgpath);
                     imgview.setImageBitmap(bm);
-                }catch(Exception e){Toast.makeText(getApplicationContext(), "load error", Toast.LENGTH_SHORT).show();}
-            }
-            else
-                Toast.makeText(this, "Image doesn't exist", Toast.LENGTH_SHORT).show();
+                }catch(Exception e){Toast.makeText(getApplicationContext(), "load error", Toast.LENGTH_LONG).show();}
+
 
             //ImageView myImage = (ImageView) findViewById(m[i].getResource_num());
         }
