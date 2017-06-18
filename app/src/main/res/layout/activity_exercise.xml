@@ -204,24 +204,16 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="운동명"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="운동명"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            </ListView>
         </LinearLayout>
 
     </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/main_todayLayout"
@@ -230,6 +222,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#00ffff"
@@ -245,41 +238,37 @@
             android:background="#eeeeee">
 
             <LinearLayout
-                android:id="@+id/main_todayScrollLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            android:id="@+id/main_todayScrollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_margin="2dp"
                     android:background="#ffff00"
-                    android:onClick="onClickExercise"
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/checkBox1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="50dp"
-                        android:text="운동명"
+                        android:layout_marginLeft="10dp"
+                        android:text=" 운동명"
                         android:textColor="@color/black"
                         android:textSize="30dp" />
 
                     <Button
+                        android:id="@+id/button1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom" />
+                        android:background="@drawable/zoom"
+                        android:onClick="onClick" />
 
                 </RelativeLayout>
 
@@ -289,31 +278,83 @@
                     android:layout_height="60dp"
                     android:layout_margin="2dp"
                     android:background="#ffff00"
-                    android:onClick="onClickExercise"
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/checkBox2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="50dp"
-                        android:text="운동명"
+                        android:layout_marginLeft="10dp"
+                        android:text=" 운동명"
                         android:textColor="@color/black"
                         android:textSize="30dp" />
 
                     <Button
+                        android:id="@+id/button2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom" />
+                        android:background="@drawable/zoom"
+                        android:onClick="onClick" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="2dp"
+                    android:background="#ffff00"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text=" 운동명"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:background="@drawable/zoom"
+                        android:onClick="onClick" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="2dp"
+                    android:background="#ffff00"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkBox4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text=" 운동명"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:background="@drawable/zoom"
+                        android:onClick="onClick" />
                 </RelativeLayout>
 
             </LinearLayout>

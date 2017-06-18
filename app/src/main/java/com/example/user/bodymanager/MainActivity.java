@@ -26,9 +26,11 @@ Variables v = (Variables) getApplication();
         m[1] = new Muscle("adductor_green");
         m[2] = new Muscle("biceps_green");
 
+
         m[0].setDamage(150);
         m[1].setDamage(255);
         m[2].setDamage(455);
+
 
         m[0].setResource_num(bodygraphDrawable[0]);
         m[1].setResource_num(bodygraphDrawable[1]);
@@ -37,10 +39,10 @@ Variables v = (Variables) getApplication();
         v.setMuscles(m);
 
 
-
 //=========================================|
         setContentView(R.layout.activity_main);
         startActivity(new Intent(this, SplashActivity.class));
+
 
     //image view
         if(storageWritable()) {
@@ -124,7 +126,5 @@ Variables v = (Variables) getApplication();
         Toast.makeText(this, "운동", Toast.LENGTH_SHORT).show();
 
     }
-
-
 
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
+
 import android.content.Context;
 import android.widget.Toast;
 
@@ -130,6 +131,7 @@ public class BodygraphActivity extends Activity {
                     G = Color.green(pixel);
                     B = Color.blue(pixel);
 
+
                     if(R<=4 && G<=4 && B<=4)
                         continue;
 
@@ -146,10 +148,12 @@ public class BodygraphActivity extends Activity {
 
                         // set pixel color to output bitmap
                         bmOut.setPixel(x, y, Color.argb(A, R, G, B));
+
                 }
             }
 
             //save to SDcard
+
             FileOutputStream out=null;
             try {
                 //android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
