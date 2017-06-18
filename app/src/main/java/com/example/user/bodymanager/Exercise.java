@@ -1,13 +1,14 @@
 package com.example.user.bodymanager;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Seok on 2017-06-17.
  */
 
-public class Exercise {
+public class Exercise implements Serializable {
     public Exercise(){};
     public Exercise(String n, int np, ArrayList<String> p, String s, int sp,ArrayList<String> se, String t, String k, String ti)
     {
