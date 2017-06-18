@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 public class CalendarPopup extends Activity {
     private int year;
     private int month;
@@ -24,7 +27,6 @@ public class CalendarPopup extends Activity {
     protected void onCreate(Bundle savedInstantState) {
         super.onCreate(savedInstantState);
         setContentView(R.layout.activity_calendar_popup);
-
         /*
         팝업창의 날짜를 가지고 온다.
          */
@@ -35,6 +37,12 @@ public class CalendarPopup extends Activity {
         Toast.makeText(CalendarPopup.this, year+"/"+(month+1)+"/"+day, Toast.LENGTH_SHORT).show();
         TextView date = (TextView) findViewById(R.id.textView);
         date.setText(year+"/"+(month+1)+"/"+day);
+
+        /*
+        읽어온 날짜를 이용해서 해당 날의 운동 목록을 가지고 온다
+         */
+        String openFileName = "/" + year + month + day;
+        //FileInputStream fis = openFileInput();
 
         /*
         그날의 운동 목록을 출력하는 리스트뷰

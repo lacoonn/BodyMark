@@ -10,6 +10,7 @@ public class Variables extends Application {
 //Variables v = (Variables) getApplication()  으로 선언한 후, v에 저장된 변수를 사용 가능
 
     private Muscle[] muscles;
+    public ExerciseList todayExerciseList;
 
 
     public Muscle[] getMuscles() {
