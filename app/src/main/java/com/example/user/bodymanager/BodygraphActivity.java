@@ -78,14 +78,14 @@ public class BodygraphActivity extends Activity {
         imageView = (ImageView) findViewById(id);
         imageView.setImageResource(drawable);
     }
-
+/*
     public int getBodygraphColor(int id) {     // 저장된 데이터를 가져와 바디그래프에 반영한다
         int begin = R.id.main_bodygraph_abs;
         imageView = (ImageView) findViewById(id);
         imageView.setImageResource(bodygraphDrawable[id - begin]);
         return bodygraphDrawable[id - begin];
     }
-
+*/
     public void changeVisibility() {
         for (int i = R.id.main_bodygraph_body; i < R.id.main_bodygraph_end; i++) {
             imageView = (ImageView) findViewById(i);
@@ -96,6 +96,7 @@ public class BodygraphActivity extends Activity {
             }
         }
     }
+
     public void createBMP(Context context)    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
     {
 
