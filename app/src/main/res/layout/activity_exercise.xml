@@ -19,48 +19,21 @@
             android:layout_height="350dp">
 
             <ImageView
-                android:id="@+id/main_bodygraph_body"
+                android:id="@+id/main_bodygraph_body1"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/body"
+                android:src="@drawable/body1"
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_abs"
+                android:id="@+id/main_bodygraph_bicep"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/abs_green"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/main_bodygraph_adductor"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/adductor_green"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/main_bodygraph_biceps"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/biceps_green"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/main_bodygraph_calves"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/calves_green"
+                android:src="@drawable/bicep"
                 android:visibility="visible" />
 
             <ImageView
@@ -69,43 +42,70 @@
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/chest_green"
+                android:src="@drawable/chest"
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_obliques"
+                android:id="@+id/main_bodygraph_deltoid"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/obliques_green"
+                android:src="@drawable/deltoid"
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_quads"
+                android:id="@+id/main_bodygraph_extensor"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/quads_green"
+                android:src="@drawable/extensor"
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_shoulders"
+                android:id="@+id/main_bodygraph_flexor"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/shoulders_green"
+                android:src="@drawable/flexor"
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_traps"
+                android:id="@+id/main_bodygraph_oblique"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/traps_green"
+                android:src="@drawable/oblique"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_quadricep"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/quadricep"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_rectus"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/rectus"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_trapezius"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/trapezius"
                 android:visibility="visible" />
 
             <ImageView
@@ -118,66 +118,75 @@
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_calves2"
+                android:id="@+id/main_bodygraph_deltoid2"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/calves2_green"
+                android:src="@drawable/deltoid2"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_glutes"
+                android:id="@+id/main_bodygraph_glute"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/glutes_green"
+                android:src="@drawable/glute"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_hamstrings"
+                android:id="@+id/main_bodygraph_hamstring"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/hamstrings_green"
+                android:src="@drawable/hamstring"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_lats"
+                android:id="@+id/main_bodygraph_latissimus"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/lats_green"
+                android:src="@drawable/latissimus"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_shoulders2"
+                android:id="@+id/main_bodygraph_rhomboid"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/shoulders2_green"
+                android:src="@drawable/rhomboid"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_traps2"
+                android:id="@+id/main_bodygraph_soleus"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/traps2_green"
+                android:src="@drawable/soleus"
                 android:visibility="invisible" />
 
             <ImageView
-                android:id="@+id/main_bodygraph_triceps"
+                android:id="@+id/main_bodygraph_trapezius2"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/triceps_green"
+                android:src="@drawable/trapezius2"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_tricep"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/tricep"
                 android:visibility="invisible" />
 
             <ImageView
@@ -204,16 +213,24 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
-            <ListView
-                android:id="@+id/listView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-            </ListView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="운동명"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="운동명"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </RelativeLayout>
-
 
     <LinearLayout
         android:id="@+id/main_todayLayout"
@@ -222,7 +239,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#00ffff"
@@ -238,37 +254,41 @@
             android:background="#eeeeee">
 
             <LinearLayout
-            android:id="@+id/main_todayScrollLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+                android:id="@+id/main_todayScrollLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_margin="2dp"
                     android:background="#ffff00"
+                    android:onClick="onClickExercise"
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/checkBox1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="운동명"
                         android:textColor="@color/black"
                         android:textSize="30dp" />
 
                     <Button
-                        android:id="@+id/button1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
+                        android:background="@drawable/zoom" />
 
                 </RelativeLayout>
 
@@ -278,83 +298,31 @@
                     android:layout_height="60dp"
                     android:layout_margin="2dp"
                     android:background="#ffff00"
+                    android:onClick="onClickExercise"
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/checkBox2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="운동명"
                         android:textColor="@color/black"
                         android:textSize="30dp" />
 
                     <Button
-                        android:id="@+id/button2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="2dp"
-                    android:background="#ffff00"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
-                        android:textColor="@color/black"
-                        android:textSize="30dp" />
-
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="2dp"
-                    android:background="#ffff00"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
-                        android:textColor="@color/black"
-                        android:textSize="30dp" />
-
-                    <Button
-                        android:id="@+id/button4"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
+                        android:background="@drawable/zoom" />
                 </RelativeLayout>
 
             </LinearLayout>
