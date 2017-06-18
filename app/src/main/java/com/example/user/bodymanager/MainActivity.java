@@ -1,10 +1,15 @@
 package com.example.user.bodymanager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+import android.content.Context;
 public class MainActivity extends BodygraphActivity {
 
     @Override
@@ -21,37 +26,56 @@ Variables v = (Variables) getApplication();
         m[1] = new Muscle("adductor_green");
         m[2] = new Muscle("biceps_green");
 
-        m[0].setDamage(10);
-        m[1].setDamage(100);
-        m[2].setDamage(250);
+
+        m[0].setDamage(150);
+        m[1].setDamage(255);
+        m[2].setDamage(455);
+
 
         m[0].setResource_num(bodygraphDrawable[0]);
         m[1].setResource_num(bodygraphDrawable[1]);
         m[2].setResource_num(bodygraphDrawable[2]);
 
         v.setMuscles(m);
-        m=null;
 
 
 //=========================================|
         setContentView(R.layout.activity_main);
         startActivity(new Intent(this, SplashActivity.class));
-/*
+
+
     //image view
+        if(storageWritable()) {
+            createBMP(this);
+            Toast.makeText(this, "storage Access Succeed", Toast.LENGTH_SHORT).show();
+        }
+        else if(storageReadable()) {
+            Toast.makeText(this, "storage write Denied", Toast.LENGTH_SHORT).show();
+        }
+
+        if(storageReadable()) {
         for(int i=0 ; i < m.length ; ++i) {
-            File imgFile = new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+m[i].getName());
-            if(imgFile.exists()){
-
+        ImageView imgview;
+                /*
                 Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());  //파일에서 읽어옴
-
                 ImageView myImage = (ImageView) findViewById(m[i].getResource_num());   //이미지 설정
                 myImage.setImageBitmap(myBitmap);   //읽어온 bitmap으로 이미지 변경
+                */
+                try{
+                    imgview = (ImageView)findViewById(bodygraphId[i]);
+                    String imgpath = "data/user/0/com.example.user.bodymanager/files/" + m[i].getName() + ".png";
+                    Bitmap bm = BitmapFactory.decodeFile(imgpath);
+                    imgview.setImageBitmap(bm);
+                }catch(Exception e){Toast.makeText(getApplicationContext(), "load error", Toast.LENGTH_LONG).show();}
 
-            }
 
             //ImageView myImage = (ImageView) findViewById(m[i].getResource_num());
         }
-*/
+
+        }
+        else {
+            Toast.makeText(this, "storage Access Error", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClick(View view) {
@@ -90,14 +114,16 @@ Variables v = (Variables) getApplication();
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
             case R.id.main_btnReverse:
-                changeVisibility();;
+                changeVisibility();
                 break;
         }
     }
 
     public void onClickExercise(View view) {
+        Variables v = (Variables)getApplication();
+
         int id = view.getId();
-        Toast.makeText(this, "운동!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "운동", Toast.LENGTH_SHORT).show();
 
     }
 
