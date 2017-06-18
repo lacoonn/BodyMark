@@ -10,9 +10,48 @@ public class MainActivity extends BodygraphActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //InitiateBodygraphColors();
+
+//variables initializing ==================|
+Variables v = (Variables) getApplication();
+
+        Muscle []m = new Muscle[3];
+        m[0] = new Muscle("abs_green");
+        m[1] = new Muscle("adductor_green");
+        m[2] = new Muscle("biceps_green");
+
+        m[0].setDamage(10);
+        m[1].setDamage(100);
+        m[2].setDamage(250);
+
+        m[0].setResource_num(bodygraphDrawable[0]);
+        m[1].setResource_num(bodygraphDrawable[1]);
+        m[2].setResource_num(bodygraphDrawable[2]);
+
+        v.setMuscles(m);
+        m=null;
+
+
+//=========================================|
         setContentView(R.layout.activity_main);
         startActivity(new Intent(this, SplashActivity.class));
-        //InitiateBodygraphColors();
+/*
+    //image view
+        for(int i=0 ; i < m.length ; ++i) {
+            File imgFile = new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+m[i].getName());
+            if(imgFile.exists()){
+
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());  //파일에서 읽어옴
+
+                ImageView myImage = (ImageView) findViewById(m[i].getResource_num());   //이미지 설정
+                myImage.setImageBitmap(myBitmap);   //읽어온 bitmap으로 이미지 변경
+
+            }
+
+            //ImageView myImage = (ImageView) findViewById(m[i].getResource_num());
+        }
+*/
     }
 
     public void onClick(View view) {
@@ -63,4 +102,3 @@ public class MainActivity extends BodygraphActivity {
     }
 
 }
-
