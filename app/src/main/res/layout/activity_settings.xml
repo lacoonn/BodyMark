@@ -44,16 +44,18 @@
                 android:id="@+id/settings_male_btn"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:textOn="남자"
-                android:textOff="남자"/>
+                android:textOff="남자"
+                android:onClick="onClick"/>
             <ToggleButton
                 android:id="@+id/settings_female_btn"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:textOn="여자"
-                android:textOff="여자"/>
+                android:textOff="여자"
+                android:onClick="onClick"/>
 
         </LinearLayout>
 
@@ -71,6 +73,7 @@
                 android:textSize="20dp" />
 
             <EditText
+                android:id="@+id/settings_height"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -100,6 +103,7 @@
                 android:textSize="20dp" />
 
             <EditText
+                android:id="@+id/settings_weight"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -129,6 +133,7 @@
                 android:textSize="20dp" />
 
             <EditText
+                android:id="@+id/settings_age"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
