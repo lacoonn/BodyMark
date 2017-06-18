@@ -1,48 +1,27 @@
 package com.example.user.bodymanager;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.os.Environment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
-import static android.R.attr.bitmap;
-import static android.R.attr.start;
 
 /**
  * Created by User on 2017-05-31.
  */
 
-public class BodygraphActivity extends AppCompatActivity {
+public class BodygraphActivity extends Activity {
 
-    ImageView imageView;
+    private ImageView imageView;
 
-    int bodygraphDrawable[] = {
+    public static int bodygraphDrawable[] = {
             R.drawable.abs_green,
             R.drawable.adductor_green,
             R.drawable.biceps_green,
@@ -69,10 +48,10 @@ public class BodygraphActivity extends AppCompatActivity {
 
     public void InitiateBodygraphColors() {
         int begin = R.id.main_bodygraph_abs;
-            for (int i = R.id.main_bodygraph_abs; i < R.id.main_bodygraph_end; i++) {
-                if ( i == R.id.main_bodygraph_body2) continue;
-                setBodygraphColor(i, bodygraphDrawable[i-begin]);
-            }
+        for (int i = R.id.main_bodygraph_abs; i < R.id.main_bodygraph_end; i++) {
+            if (i == R.id.main_bodygraph_body2) continue;
+            setBodygraphColor(i, bodygraphDrawable[i - begin]);
+        }
     }
 
     public void setBodygraphColor(int id, int drawable) {      // 데이터를 저장하고 바디그래프에 반영한다
@@ -83,8 +62,8 @@ public class BodygraphActivity extends AppCompatActivity {
     public int getBodygraphColor(int id) {     // 저장된 데이터를 가져와 바디그래프에 반영한다
         int begin = R.id.main_bodygraph_abs;
         imageView = (ImageView) findViewById(id);
-        imageView.setImageResource(bodygraphDrawable[id-begin]);
-        return bodygraphDrawable[id-begin];
+        imageView.setImageResource(bodygraphDrawable[id - begin]);
+        return bodygraphDrawable[id - begin];
     }
 
     public void changeVisibility() {
@@ -92,10 +71,96 @@ public class BodygraphActivity extends AppCompatActivity {
             imageView = (ImageView) findViewById(i);
             if (imageView.getVisibility() == View.VISIBLE) {
                 imageView.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 imageView.setVisibility(View.VISIBLE);
             }
         }
+    }
+    public void createBMP()    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
+    {
+        Variables v = (Variables) getApplication();
+        Muscle[] m = v.getMuscles();
+
+        Bitmap bmIn;
+        for (int i = 0; i < m.length; ++i) {
+            bmIn = BitmapFactory.decodeResource(getResources(), m[i].getResource_num());
+
+
+            // get image size
+            int width = bmIn.getWidth();
+            int height = bmIn.getHeight();
+            // create output bitmap
+            Bitmap bmOut = Bitmap.createBitmap(width, height, bmIn.getConfig());
+            // color information
+            int A, R, G, B;
+            int pixel;
+
+            // scan through all pixels
+            // calculate and change color
+            for (int x = 0; x < width; ++x) {
+                for (int y = 0; y < height; ++y) {
+
+                    // get pixel color
+                    pixel = bmIn.getPixel(x, y);
+                    A = Color.alpha(pixel);
+                    R = Color.red(pixel);
+                    G = Color.green(pixel);
+                    B = Color.blue(pixel);
+
+                    if(R==0&&G==0&&B==0)
+                        continue;
+
+                    // round-off color offset
+                    if(m[i].getDamage()<255) {
+                        R = m[i].getDamage();
+                        G = 255;
+                    }
+                    else{
+                        R=255;
+                        G=255-m[i].getDamage();
+                    }
+                        B = 0;
+
+                        // set pixel color to output bitmap
+                        bmOut.setPixel(x, y, Color.argb(A, R, G, B));
+                }
+            }
+
+            //save to SDcard
+            FileOutputStream out=null;
+            try {
+                //android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
+                //"/data/data/com.example.user.bodymanager/files/"
+                out = new FileOutputStream(m[i].getName());
+                bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally
+            {
+                    try {
+                        if(out!=null)
+                            out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+        }
+    }
+
+    public boolean storageWritable()
+    {
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state))
+            return true;
+        return false;
+    }
+    public boolean storageReadable()
+    {
+        String state = Environment.getExternalStorageState();
+        if(Environment.MEDIA_MOUNTED.equals(state)||Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))
+            return true;
+        return false;
     }
 }
