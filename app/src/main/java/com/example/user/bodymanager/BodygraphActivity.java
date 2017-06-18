@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
-
 import android.content.Context;
 import android.widget.Toast;
 
@@ -26,50 +25,53 @@ public class BodygraphActivity extends Activity {
     private ImageView imageView;
 
     public static int bodygraphDrawable[] = {
-            R.drawable.abs_green,
-            R.drawable.adductor_green,
-            R.drawable.biceps_green,
-            R.drawable.calves_green,
-            R.drawable.chest_green,
-            R.drawable.obliques_green,
-            R.drawable.quads_green,
-            R.drawable.shoulders_green,
-            R.drawable.traps_green,         // forward 9
+            R.drawable.bicep,
+            R.drawable.chest,
+            R.drawable.deltoid,
+            R.drawable.extensor,
+            R.drawable.flexor,
+            R.drawable.oblique,
+            R.drawable.quadricep,
+            R.drawable.rectus,
+            R.drawable.trapezius,         // forward 9
 
-            R.drawable.calves2_green,
-            R.drawable.glutes_green,
-            R.drawable.hamstrings_green,
-            R.drawable.lats_green,
-            R.drawable.shoulders2_green,
-            R.drawable.traps2_green,
-            R.drawable.triceps_green        // backward 7
+            R.drawable.deltoid2,
+            R.drawable.glute,
+            R.drawable.hamstring,
+            R.drawable.latissimus,
+            R.drawable.rhomboid,
+            R.drawable.soleus,
+            R.drawable.trapezius2,
+            R.drawable.tricep               // backward 7
     };
     public static int bodygraphId[] = {
-            R.id.main_bodygraph_abs,
-            R.id.main_bodygraph_adductor,
-            R.id.main_bodygraph_biceps,
-            R.id.main_bodygraph_calves,
+            R.id.main_bodygraph_bicep,
             R.id.main_bodygraph_chest,
-            R.id.main_bodygraph_obliques,
-            R.id.main_bodygraph_quads,
-            R.id.main_bodygraph_shoulders,
-            R.id.main_bodygraph_traps,
-            R.id.main_bodygraph_calves2,
-            R.id.main_bodygraph_hamstrings,
-            R.id.main_bodygraph_lats,
-            R.id.main_bodygraph_shoulders2,
-            R.id.main_bodygraph_traps2,
-            R.id.main_bodygraph_triceps
+            R.id.main_bodygraph_deltoid,
+            R.id.main_bodygraph_extensor,
+            R.id.main_bodygraph_flexor,
+            R.id.main_bodygraph_oblique,
+            R.id.main_bodygraph_quadricep,
+            R.id.main_bodygraph_rectus,
+            R.id.main_bodygraph_trapezius,
+            R.id.main_bodygraph_deltoid2,
+            R.id.main_bodygraph_glute,
+            R.id.main_bodygraph_hamstring,
+            R.id.main_bodygraph_latissimus,
+            R.id.main_bodygraph_rhomboid,
+            R.id.main_bodygraph_soleus,
+            R.id.main_bodygraph_trapezius2,
+            R.id.main_bodygraph_tricep
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+/*
     public void InitiateBodygraphColors() {
-        int begin = R.id.main_bodygraph_abs;
-        for (int i = R.id.main_bodygraph_abs; i < R.id.main_bodygraph_end; i++) {
+        int begin = R.id.main_bodygraph_bicep;
+        for (int i = R.id.main_bodygraph_bicep; i < R.id.main_bodygraph_end; i++) {
             if (i == R.id.main_bodygraph_body2) continue;
             setBodygraphColor(i, bodygraphDrawable[i - begin]);
         }
@@ -79,7 +81,7 @@ public class BodygraphActivity extends Activity {
         imageView = (ImageView) findViewById(id);
         imageView.setImageResource(drawable);
     }
-/*
+
     public int getBodygraphColor(int id) {     // 저장된 데이터를 가져와 바디그래프에 반영한다
         int begin = R.id.main_bodygraph_abs;
         imageView = (ImageView) findViewById(id);
@@ -88,7 +90,7 @@ public class BodygraphActivity extends Activity {
     }
 */
     public void changeVisibility() {
-        for (int i = R.id.main_bodygraph_body; i < R.id.main_bodygraph_end; i++) {
+        for (int i = R.id.main_bodygraph_body1; i < R.id.main_bodygraph_end; i++) {
             imageView = (ImageView) findViewById(i);
             if (imageView.getVisibility() == View.VISIBLE) {
                 imageView.setVisibility(View.INVISIBLE);
@@ -97,7 +99,6 @@ public class BodygraphActivity extends Activity {
             }
         }
     }
-
     public void createBMP(Context context)    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
     {
 
@@ -131,7 +132,6 @@ public class BodygraphActivity extends Activity {
                     G = Color.green(pixel);
                     B = Color.blue(pixel);
 
-
                     if(R<=4 && G<=4 && B<=4)
                         continue;
 
@@ -148,12 +148,10 @@ public class BodygraphActivity extends Activity {
 
                         // set pixel color to output bitmap
                         bmOut.setPixel(x, y, Color.argb(A, R, G, B));
-
                 }
             }
 
             //save to SDcard
-
             FileOutputStream out=null;
             try {
                 //android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
@@ -163,7 +161,7 @@ public class BodygraphActivity extends Activity {
                 out = context.openFileOutput(m[i].getName() + ".png", 0);
                 bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
-Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
                 e.printStackTrace();
