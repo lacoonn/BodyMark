@@ -62,6 +62,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         textView.setText(name);
 
         setMuscleExercise();
+        //setMuscleExercise2();
 
     } // end onCreate()
 
@@ -173,16 +174,20 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     protected static MuscleExercise addingMuscleExercise(String part ,ArrayList<Exercise> exlist)
     {
         MuscleExercise me = new MuscleExercise();
-        int i, count = 0;
+        int i, j, count = 0;
         ArrayList<Exercise> templist = new ArrayList<Exercise>();
+        ArrayList<String> temppart = new ArrayList<String>();
 
         me.setName(part);
         for(i=0;i<exlist.size();i++)
         {
-            if(exlist.get(i).getPart().contains(part))
-            {
-                templist.add(exlist.get(i));
-                count++;
+            temppart = exlist.get(i).getPart();
+            for(j=0;j<exlist.get(i).getPartNum();j++) {
+                if (temppart.get(i).equals(part)) {
+                    templist.add(exlist.get(i));
+                    count++;
+                    break;
+                }
             }
         }
         me.setExer(templist);
@@ -195,6 +200,140 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         int linenum = 0;
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.exercise)));
+            Exercise ex;
+            int partnum = 0, i;
+            ArrayList<String> part = new ArrayList<String>();
+            ArrayList<String> seq = new ArrayList<String>();
+
+            String line;
+            String nameExercise =""; //
+            ArrayList<String> partExercise = new ArrayList<String>(); //
+            String simpleExercise ="";//
+            int seqnum = 0;
+            ArrayList<String> seqExercise = new ArrayList<String>(); //
+            String tipExercise =""; //
+            String kcalExercise =""; //
+            String tiredExercise =""; //
+            while ((line = br.readLine()) != null) {
+                switch(linenum) {
+                    case 0: nameExercise = line;
+                        break;
+                    case 1:
+                        partnum = Integer.parseInt(line); // atoi
+                        for(i=0;i<partnum;i++)
+                        {
+                            line = br.readLine();
+                            part.add(line);
+                        }
+                        partExercise = part;
+                        break;
+                    case 2: simpleExercise = line;
+                        break;
+                    case 3:
+                        seqnum = Integer.parseInt(line);
+                        for(i=0;i<seqnum;i++)
+                        {
+                            line = br.readLine();
+                            seq.add(line);
+                        }
+                        seqExercise = seq;
+                        break;
+                    case 4: tipExercise = line;
+                        break;
+                    case 5: kcalExercise = line;
+                        break;
+                    case 6: tiredExercise = line;
+                        break;
+                    default:
+                        break;
+                }
+                linenum++;
+                if(linenum == 7) {
+                    linenum = 0;
+                    ex = new Exercise(nameExercise, partnum, partExercise, simpleExercise, seqnum, seqExercise,
+                           tipExercise, kcalExercise, tiredExercise);
+                   exlist.add(ex);
+                }
+            }
+
+            br.close();
+        }
+        catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+    protected void loadingExercise2(ExerciseManager exlist) // load to file and insert ExManager
+    {
+        int linenum = 0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.exercise2)));
+            Exercise ex;
+            int partnum = 0, i;
+            ArrayList<String> part = new ArrayList<String>();
+            ArrayList<String> seq = new ArrayList<String>();
+
+            String line;
+            String nameExercise =""; //
+            ArrayList<String> partExercise = new ArrayList<String>(); //
+            String simpleExercise ="";//
+            int seqnum = 0;
+            ArrayList<String> seqExercise = new ArrayList<String>(); //
+            String tipExercise =""; //
+            String kcalExercise =""; //
+            String tiredExercise =""; //
+            while ((line = br.readLine()) != null) {
+                switch(linenum) {
+                    case 0: nameExercise = line;
+                        break;
+                    case 1:
+                        partnum = Integer.parseInt(line); // atoi
+                        for(i=0;i<partnum;i++)
+                        {
+                            line = br.readLine();
+                            part.add(line);
+                        }
+                        partExercise = part;
+                        break;
+                    case 2: simpleExercise = line;
+                        break;
+                    case 3:
+                        seqnum = Integer.parseInt(line);
+                        for(i=0;i<seqnum;i++)
+                        {
+                            line = br.readLine();
+                            seq.add(line);
+                        }
+                        seqExercise = seq;
+                        break;
+                    case 4: tipExercise = line;
+                        break;
+                    case 5: kcalExercise = line;
+                        break;
+                    case 6: tiredExercise = line;
+                        break;
+                    default:
+                        break;
+                }
+                linenum++;
+                if(linenum == 7) {
+                    linenum = 0;
+                    ex = new Exercise(nameExercise, partnum, partExercise, simpleExercise, seqnum, seqExercise,
+                            tipExercise, kcalExercise, tiredExercise);
+                    exlist.add(ex);
+                }
+            }
+
+            br.close();
+        }
+        catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+    protected void loadingExercise3(ExerciseManager exlist) // load to file and insert ExManager
+    {
+        int linenum = 0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.exercise3)));
             Exercise ex;
             int partnum = 0, i;
             ArrayList<String> part = new ArrayList<String>();
@@ -264,7 +403,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
 
         for(i=0;i<exManager.count();i++)
         {
-            if(exlist.get(i).getName() == "벤치 프레스 - 머신")
+            if(exlist.get(i).getName().equals("벤치 프레스 - 머신"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -280,7 +419,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "벤치 프레스 - 바벨, 플랫")
+            else if(exlist.get(i).getName().equals("벤치 프레스 - 바벨, 플랫"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -296,7 +435,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "풀오버 - 덤벨, 플랫")
+            else if(exlist.get(i).getName().equals("풀오버 - 덤벨, 플랫"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -312,7 +451,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "숄더 프레스 - 머신")
+            else if(exlist.get(i).getName().equals("숄더 프레스 - 머신"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -327,7 +466,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "비하인드 넥 프레스 - 스미스 머신")
+            else if(exlist.get(i).getName().equals("비하인드 넥 프레스 - 스미스 머신"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -343,7 +482,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "아놀드 프레스 - 머신")
+            else if(exlist.get(i).getName().equals("아놀드 프레스 - 머신"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -359,7 +498,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "컬 - 바벨")
+            else if(exlist.get(i).getName().equals("컬 - 바벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -374,7 +513,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "컬 - 덤벨")
+            else if(exlist.get(i).getName().equals("컬 - 덤벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -389,7 +528,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "컬 프레스 - 덤벨")
+            else if(exlist.get(i).getName().equals("컬 프레스 - 덤벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -405,7 +544,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "트라이셉스 익스텐션 - 덤벨, 라잉")
+            else if(exlist.get(i).getName().equals("트라이셉스 익스텐션 - 덤벨, 라잉"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -420,7 +559,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "리버스 리스트 컬 - 바벨")
+            else if(exlist.get(i).getName().equals("리버스 리스트 컬 - 바벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -436,7 +575,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "조트맨 컬 - 덤벨")
+            else if(exlist.get(i).getName().equals("조트맨 컬 - 덤벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -452,7 +591,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "랫 풀 다운 - 머신")
+            else if(exlist.get(i).getName().equals("랫 풀 다운 - 머신"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -468,7 +607,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "로우 - 티바")
+            else if(exlist.get(i).getName().equals("로우 - 티바"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -483,7 +622,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "데드리프트 - 덤벨")
+            else if(exlist.get(i).getName().equals("데드리프트 - 덤벨"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -498,7 +637,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "백 익스텐션")
+            else if(exlist.get(i).getName().equals("백 익스텐션"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -514,7 +653,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "싯업")
+            else if(exlist.get(i).getName().equals("싯업"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -530,7 +669,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "크로스 크런치")
+            else if(exlist.get(i).getName().equals("크로스 크런치"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -546,7 +685,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "V업")
+            else if(exlist.get(i).getName().equals("V업"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -561,7 +700,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "사이드 힙 킥")
+            else if(exlist.get(i).getName().equals("사이드 힙 킥"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -577,7 +716,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "점프 스쿼트")
+            else if(exlist.get(i).getName().equals("점프 스쿼트"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -593,7 +732,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "와이드 스쿼트")
+            else if(exlist.get(i).getName().equals("와이드 스쿼트"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -608,7 +747,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "레그 컬 - 라잉")
+            else if(exlist.get(i).getName().equals("레그 컬 - 라잉"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -623,7 +762,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "멀티힙")
+            else if(exlist.get(i).getName().equals("멀티힙"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -639,7 +778,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 temp.setMaxpic(maxpic);
                 piclist.add(temp);
             }
-            else if(exlist.get(i).getName() == "카프 레이즈 - 싱글 레그")
+            else if(exlist.get(i).getName().equals("카프 레이즈 - 싱글 레그"))
             {
                 Pic temp = new Pic();
                 int[] pic = new int[4];
@@ -667,12 +806,22 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         loadingMuscleExercise(v.getMeManager(), v.getExManager());
         loadingPic(v.getPicManager(),v.getExManager());
         //
+
         ex = v.getExManager().searchName("벤치 프레스 - 머신");
-        viewExercise(ex);
+        // viewExercise(ex);
         ex = v.getExManager().searchName("벤치 프레스 - 바벨, 플랫");
-        viewExercise(ex);
+        //viewExercise(ex);
         melist = v.getMeManager().lists();
         Toast.makeText(this,melist.get(0).getName() + "\n" + melist.get(0).getMaxexer() + "\n" + melist.get(0).getExer().get(0).getName() + "\n" + melist.get(0).getExer().get(1).getName(),Toast.LENGTH_LONG).show();
         Toast.makeText(this,melist.get(1).getName() + "\n" + melist.get(1).getMaxexer() + "\n" + melist.get(1).getExer().get(0).getName() + "\n" + melist.get(1).getExer().get(1).getName(),Toast.LENGTH_LONG).show();
+    }
+
+
+    public void setMuscleExercise2()
+    {
+        Variables v = (Variables) getApplication();
+
+        loadingExercise2(v.getExManager());
+        loadingExercise3(v.getExManager());
     }
 }

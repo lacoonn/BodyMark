@@ -72,52 +72,52 @@ public class ExplainActivity extends Activity {
 
     public String transTired(String n)
     {
-        if(n == "3")
-            return "상급자용";
-        else if (n == "2")
-            return "중급자용";
-        else if (n == "1")
-            return "초급자용";
+        if(n.equals("3"))
+        return "상급자용";
+        else if (n.equals("2"))
+        return "중급자용";
+        else if (n.equals("1"))
+        return "초급자용";
 
         return null;
     }
 
     public String transPart(String n)
     {
-        if(n == "chest1")
-            return "대흉근";
-        else if(n == "shoulder1")
-            return "삼각근";
-        else if(n == "shoulder2")
-            return "승모근";
-        else if(n == "uarm1")
-            return "삼두근";
-        else if(n == "uarm2")
-            return "이두근";
-        else if(n == "larm1")
-            return "굴곡근";
-        else if(n == "larm2")
-            return "신전근";
-        else if(n == "back1")
-            return "광배근";
-        else if(n == "back2")
-            return "승모근";
-        else if(n == "back3")
-            return "능형근";
-        else if(n == "abdomen1")
-            return "복직근";
-        else if(n == "abdomen2")
-            return "복사근";
-        else if(n == "leg1")
-            return "둔근";
-        else if(n == "leg2")
-            return "대퇴이두근";
-        else if(n == "leg3")
-            return "대퇴사두근";
-        else if(n == "leg4")
-            return "슬굴곡근";
-        else if(n == "leg5")
-            return "비복근";
+        if(n.equals("chest1"))
+        return "대흉근";
+        else if(n.equals("shoulder1"))
+        return "삼각근";
+        else if(n.equals("shoulder2"))
+        return "승모근";
+        else if(n.equals("uarm1"))
+        return "삼두근";
+        else if(n.equals("uarm2"))
+        return "이두근";
+        else if(n.equals("larm1"))
+        return "굴곡근";
+        else if(n.equals("larm2"))
+        return "신전근";
+        else if(n.equals("back1"))
+        return "광배근";
+        else if(n.equals("back2"))
+        return "승모근";
+        else if(n.equals("back3"))
+        return "능형근";
+        else if(n.equals("abdomen1"))
+        return "복직근";
+        else if(n.equals("abdomen2"))
+        return "복사근";
+        else if(n.equals("leg1"))
+        return "둔근";
+        else if(n.equals("leg2"))
+        return "대퇴이두근";
+        else if(n.equals("leg3"))
+        return "대퇴사두근";
+        else if(n.equals("leg4"))
+        return "슬굴곡근";
+        else if(n.equals("leg5"))
+        return "비복근";
 
         return null;
     }
