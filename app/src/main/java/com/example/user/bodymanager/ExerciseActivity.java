@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -30,6 +31,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
 
     ArrayAdapter<String> adapter;
     ListView listView;
+    TextView textView;
 
 
     @Override
@@ -40,7 +42,9 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         setContentView(R.layout.activity_exercise);
 
         listView = (ListView) findViewById(R.id.listView);
+        textView = (TextView) findViewById(R.id.textView_name);
         Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
 
 
         cb1 = (CheckBox)findViewById(R.id.checkBox1);
@@ -55,6 +59,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
 
         adapter = new ArrayAdapter<String>(ExerciseActivity.this, R.layout.my_text_view, v.getArrayList());
         listView.setAdapter(adapter);
+        textView.setText(name);
 
         setMuscleExercise();
 
@@ -108,19 +113,19 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         switch (view.getId()) {
             case R.id.button1:
                 startActivity(intent);
-                intent.putExtra("exer1",cb1.getText().toString());
+                intent.putExtra("exer",cb1.getText().toString());
                 break;
             case R.id.button2:
                 startActivity(intent);
-                intent.putExtra("exer2",cb2.getText().toString());
+                intent.putExtra("exer",cb2.getText().toString());
                 break;
             case R.id.button3:
                 startActivity(intent);
-                intent.putExtra("exer3",cb3.getText().toString());
+                intent.putExtra("exer",cb3.getText().toString());
                 break;
             case R.id.button4:
                 startActivity(intent);
-                intent.putExtra("exer4",cb4.getText().toString());
+                intent.putExtra("exer",cb4.getText().toString());
                 break;
             case R.id.main_btnReverse:
                 changeVisibility();
@@ -252,6 +257,407 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             ioe.printStackTrace();
         }
     }
+    protected void loadingPic(ArrayList<Pic> piclist, ExerciseManager exManager)
+    {
+        ArrayList<Exercise> exlist = exManager.lists();
+        int i,j;
+
+        for(i=0;i<exManager.count();i++)
+        {
+            if(exlist.get(i).getName() == "벤치 프레스 - 머신")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.bench_press_mech1);
+                pic[maxpic++] = (R.drawable.bench_press_mech2);
+                pic[maxpic++] = (R.drawable.bench_press_mech3);
+                pic[maxpic++] = (R.drawable.bench_press_mech4);
+
+                temp.setName("벤치 프레스 - 머신");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "벤치 프레스 - 바벨, 플랫")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.bench_press_ba_plat1);
+                pic[maxpic++] = (R.drawable.bench_press_ba_plat2);
+                pic[maxpic++] = (R.drawable.bench_press_ba_plat3);
+                pic[maxpic++] = (R.drawable.bench_press_ba_plat4);
+
+                temp.setName("벤치 프레스 - 바벨, 플랫");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "풀오버 - 덤벨, 플랫")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.pullover_dumb_plat1);
+                pic[maxpic++] = (R.drawable.pullover_dumb_plat2);
+                pic[maxpic++] = (R.drawable.pullover_dumb_plat3);
+                pic[maxpic++] = (R.drawable.pullover_dumb_plat4);
+
+                temp.setName("풀오버 - 덤벨, 플랫");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "숄더 프레스 - 머신")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.shoulder_mech1);
+                pic[maxpic++] = (R.drawable.shoulder_mech2);
+                pic[maxpic++] = (R.drawable.shoulder_mech3);
+
+                temp.setName("숄더 프레스 - 머신");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "비하인드 넥 프레스 - 스미스 머신")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.behind_neck_press1);
+                pic[maxpic++] = (R.drawable.behind_neck_press2);
+                pic[maxpic++] = (R.drawable.behind_neck_press3);
+                pic[maxpic++] = (R.drawable.behind_neck_press4);
+
+                temp.setName("비하인드 넥 프레스 - 스미스 머신");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "아놀드 프레스 - 머신")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.anold_press1);
+                pic[maxpic++] = (R.drawable.anold_press2);
+                pic[maxpic++] = (R.drawable.anold_press3);
+                pic[maxpic++] = (R.drawable.anold_press4);
+
+                temp.setName("아놀드 프레스");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "컬 - 바벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.culr_babel1);
+                pic[maxpic++] = (R.drawable.culr_babel2);
+                pic[maxpic++] = (R.drawable.culr_babel3);
+
+                temp.setName("컬 - 바벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "컬 - 덤벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.culr_dumbell1);
+                pic[maxpic++] = (R.drawable.culr_dumbell2);
+                pic[maxpic++] = (R.drawable.culr_dumbell3);
+
+                temp.setName("컬 - 덤벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "컬 프레스 - 덤벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.curl_press_dumb1);
+                pic[maxpic++] = (R.drawable.curl_press_dumb2);
+                pic[maxpic++] = (R.drawable.curl_press_dumb3);
+                pic[maxpic++] = (R.drawable.curl_press_dumb4);
+
+                temp.setName("컬 프레스 - 덤벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "트라이셉스 익스텐션 - 덤벨, 라잉")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.tryseps_extension_dumb1);
+                pic[maxpic++] = (R.drawable.tryseps_extension_dumb2);
+                pic[maxpic++] = (R.drawable.tryseps_extension_dumb3);
+
+                temp.setName("트라이셉스 익스텐션 - 덤벨, 라잉");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "리버스 리스트 컬 - 바벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.reverse_list_curl_ba1);
+                pic[maxpic++] = (R.drawable.reverse_list_curl_ba2);
+                pic[maxpic++] = (R.drawable.reverse_list_curl_ba3);
+                pic[maxpic++] = (R.drawable.reverse_list_curl_ba4);
+
+                temp.setName("리버스 리스트 컬 - 바벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "조트맨 컬 - 덤벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.jotman_dumb1);
+                pic[maxpic++] = (R.drawable.jotman_dumb2);
+                pic[maxpic++] = (R.drawable.jotman_dumb3);
+                pic[maxpic++] = (R.drawable.jotman_dumb4);
+
+                temp.setName("조트맨 컬 - 덤벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "랫 풀 다운 - 머신")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.let_pull_down__mech1);
+                pic[maxpic++] = (R.drawable.let_pull_down__mech2);
+                pic[maxpic++] = (R.drawable.let_pull_down_mech3);
+                pic[maxpic++] = (R.drawable.let_pull_down_mech4);
+
+                temp.setName("랫 풀 다운 - 머신");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "로우 - 티바")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.low_t1);
+                pic[maxpic++] = (R.drawable.low_t2);
+                pic[maxpic++] = (R.drawable.low_t3);
+
+                temp.setName("로우 - 티바");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "데드리프트 - 덤벨")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.deadlift___dumb1);
+                pic[maxpic++] = (R.drawable.deadlift___dumb2);
+                pic[maxpic++] = (R.drawable.deadlift___dumb3);
+
+                temp.setName("데드리프트 - 덤벨");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "백 익스텐션")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.back_extension1);
+                pic[maxpic++] = (R.drawable.back_extension2);
+                pic[maxpic++] = (R.drawable.back_extension3);
+                pic[maxpic++] = (R.drawable.back_extension4);
+
+                temp.setName("백 익스텐션");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "싯업")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.shitup1);
+                pic[maxpic++] = (R.drawable.shitup2);
+                pic[maxpic++] = (R.drawable.shitup3);
+                pic[maxpic++] = (R.drawable.shitup4);
+
+                temp.setName("싯업");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "크로스 크런치")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.cross_crunch1);
+                pic[maxpic++] = (R.drawable.cross_crunch2);
+                pic[maxpic++] = (R.drawable.cross_crunch3);
+                pic[maxpic++] = (R.drawable.cross_crunch4);
+
+                temp.setName("크로스 크런치");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "V업")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.vup1);
+                pic[maxpic++] = (R.drawable.vup2);
+                pic[maxpic++] = (R.drawable.vup3);
+
+                temp.setName("V업");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "사이드 힙 킥")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.side_heap_kick1);
+                pic[maxpic++] = (R.drawable.side_heap_kick2);
+                pic[maxpic++] = (R.drawable.side_heap_kick3);
+                pic[maxpic++] = (R.drawable.side_heap_kick4);
+
+                temp.setName("사이드 힙 킥");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "점프 스쿼트")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.jump_squart1);
+                pic[maxpic++] = (R.drawable.jump_squart2);
+                pic[maxpic++] = (R.drawable.jump_squart3);
+                pic[maxpic++] = (R.drawable.jump_squart4);
+
+                temp.setName("점프 스쿼트");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "와이드 스쿼트")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.wide_squart1);
+                pic[maxpic++] = (R.drawable.wide_squart2);
+                pic[maxpic++] = (R.drawable.wide_squart3);
+
+                temp.setName("와이드 스쿼트");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "레그 컬 - 라잉")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.leg_curl___lying1);
+                pic[maxpic++] = (R.drawable.leg_curl___lying2);
+                pic[maxpic++] = (R.drawable.leg_culr___lying3);
+
+                temp.setName("레그 컬 - 라잉");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "멀티힙")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.multiheap1);
+                pic[maxpic++] = (R.drawable.multiheap2);
+                pic[maxpic++] = (R.drawable.multiheap3);
+                pic[maxpic++] = (R.drawable.multiheap4);
+
+                temp.setName("멀티힙");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+            else if(exlist.get(i).getName() == "카프 레이즈 - 싱글 레그")
+            {
+                Pic temp = new Pic();
+                int[] pic = new int[4];
+                int maxpic = 0;
+
+                pic[maxpic++] = (R.drawable.carp_lays_single1);
+                pic[maxpic++] = (R.drawable.carp_lays_single2);
+                pic[maxpic++] = (R.drawable.carp_lays_single3);
+                pic[maxpic++] = (R.drawable.carp_lays_single4);
+
+                temp.setName("카프 레이즈 - 싱글 레그");
+                temp.setPic(pic);
+                temp.setMaxpic(maxpic);
+                piclist.add(temp);
+            }
+        }
+    }
+
     public void setMuscleExercise() {
         Variables v = (Variables) getApplication();
         ArrayList<MuscleExercise> melist = new ArrayList<MuscleExercise>();
@@ -259,6 +665,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         //Loading
         loadingExercise(v.getExManager());
         loadingMuscleExercise(v.getMeManager(), v.getExManager());
+        loadingPic(v.getPicManager(),v.getExManager());
         //
         ex = v.getExManager().searchName("벤치 프레스 - 머신");
         viewExercise(ex);

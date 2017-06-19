@@ -1,12 +1,13 @@
 package com.example.user.bodymanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by woochan on 2017-06-18.
  */
 
-public class ExerciseList {
+public class ExerciseList implements Serializable {
     private int year;
     private int month;
     private int day;
