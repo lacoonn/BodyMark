@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by User on 2017-05-25.
@@ -20,6 +21,7 @@ import java.io.ObjectOutputStream;
 
 public class CalenderActivity extends BodygraphActivity {
     Context context = null;
+    Variables v = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class CalenderActivity extends BodygraphActivity {
             e.printStackTrace();
         }
 
+
         // CalendarView
         CalendarView calendar = (CalendarView)findViewById(R.id.calendar);
         CalendarView.OnDateChangeListener temp = new CalendarView.OnDateChangeListener() {
@@ -77,4 +80,17 @@ public class CalenderActivity extends BodygraphActivity {
         calendar.setOnDateChangeListener(temp);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // todayExerciseList의 인자들을 arrayList에 복사한다
+        v = (Variables) getApplication();
+        ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
+        v.getArrayList().clear();
+        for(Exercise i : tempExerciseList) {
+            v.addArrayList(i.getName());
+        }
+        // updateListView를 호출한다
+        v.updateListView();
+    }
 }
