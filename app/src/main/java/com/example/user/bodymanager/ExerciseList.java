@@ -31,7 +31,7 @@ public class ExerciseList implements Serializable {
         return day;
     }
 
-    public Exercise getExercise(int order) {
+    public Exercise getExerciseByIndex(int order) {
         return exercises.get(order);
     }
 
@@ -49,11 +49,19 @@ public class ExerciseList implements Serializable {
             if(exercises.get(i).getName().equals(name))
                 return i;
         }
-  //      return  -1;
+        return  -1;
     }
 
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
+    }
+
+    public void setExerciseArray(ArrayList<Exercise> pastExercises) {
+        exercises = pastExercises;
+    }
+
+    public ArrayList<Exercise> getExerciseArray() {
+        return exercises;
     }
 
     public void removeExercise(int order) {

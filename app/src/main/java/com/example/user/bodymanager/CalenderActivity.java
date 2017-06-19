@@ -20,6 +20,7 @@ import java.io.ObjectOutputStream;
 
 public class CalenderActivity extends BodygraphActivity {
     Context context = null;
+    Variables v = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

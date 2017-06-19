@@ -30,6 +30,8 @@ public class CalendarPopup extends Activity {
     private int day;
     private Context context = null;
 
+    ExerciseList exerciseList = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstantState) {
@@ -49,11 +51,11 @@ public class CalendarPopup extends Activity {
 
 
         // 읽어온 날짜를 이용해서 해당 날의 운동 목록을 가지고 온다
-        ExerciseList exerciseList = null;
+
         //String openFileName = "" + year + (month + 1) + day + ".bin";
         String openFileName = String.format("%4d%02d%02d.bin", year, month + 1, day);
         try {
-            Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
             FileInputStream fis = new FileInputStream(Variables.path + openFileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
             //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
@@ -74,7 +76,7 @@ public class CalendarPopup extends Activity {
         if(exerciseList != null) {
             //Toast.makeText(CalendarPopup.this, "ExerciseList에서 운동 이름을 뽑아냅니다!", Toast.LENGTH_SHORT).show();
             for(int i = 0; i < exerciseList.getLength(); i++) {
-                LIST_MENU.add(exerciseList.getExercise(i).getName());
+                LIST_MENU.add(exerciseList.getExerciseByIndex(i).getName());
             }
         }
         else {
@@ -83,7 +85,6 @@ public class CalendarPopup extends Activity {
 
         // 그날의 운동 목록을 출력하는 리스트뷰
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, LIST_MENU);
-        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, LIST_MENU);
         ListView listview = (ListView) findViewById(R.id.exercise_list) ;
         listview.setAdapter(adapter) ;
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,6 +108,20 @@ public class CalendarPopup extends Activity {
                 break;
             case R.id.popup_duplicate:
                 Toast.makeText(CalendarPopup.this, "위의 운동들을 오늘의 운동 목록에 복사합니다.", Toast.LENGTH_SHORT).show();
+                Variables v = (Variables) getApplication();
+                v.todayExerciseList.setExerciseArray(exerciseList.getExerciseArray());
+
+                // todayExerciseList의 인자들을 arrayList에 복사한다 -------------------------------
+                ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
+                v.getArrayList().clear();
+                for(Exercise i : tempExerciseList) {
+                    v.addArrayList(i.getName());
+                }
+                // updateListView를 호출한다 -------------------------------------------------------
+                v.updateListView();
+
+                // 액티비티 종료 -------------------------------------------------------------------
+                finish();
                 break;
         }
     }

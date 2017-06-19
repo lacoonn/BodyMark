@@ -32,11 +32,12 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     ArrayAdapter<String> adapter;
     ListView listView;
     TextView textView;
+    Variables v;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Variables v = (Variables) getApplication();
+        v = (Variables) getApplication();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
@@ -71,43 +72,54 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         // 체크박스를 클릭해서 상태가 바꾸었을 경우 호출되는 콜백 메서드
         Variables v = (Variables) getApplication();
 
-        if(cb1.isChecked()) {
-            v.addArrayList(cb1.getText().toString());
-            adapter.notifyDataSetChanged();
+        if (buttonView.getId() == cb1.getId()) {
+            if(cb1.isChecked()) {
+                v.addArrayList(cb1.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+            else {
+                v.removeArrayList(cb1.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         }
-        else if(!cb1.isChecked()) {
-            v.removeArrayList(cb1.getText().toString());
-            adapter.notifyDataSetChanged();
+        if (buttonView.getId() == cb2.getId()) {
+            if(cb2.isChecked()) {
+                v.addArrayList(cb2.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+            else {
+                v.removeArrayList(cb2.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         }
-        else if(cb2.isChecked()) {
-            v.addArrayList(cb2.getText().toString());
-            adapter.notifyDataSetChanged();
-
+        if (buttonView.getId() == cb3.getId()) {
+            if(cb3.isChecked()) {
+                v.addArrayList(cb3.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+            else {
+                v.removeArrayList(cb3.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         }
-        else if(!cb2.isChecked()) {
-            v.removeArrayList(cb2.getText().toString());
-            adapter.notifyDataSetChanged();
-        }
-        else if(cb3.isChecked()) {
-            v.addArrayList(cb3.getText().toString());
-            adapter.notifyDataSetChanged();
-
-        }
-        else if(!cb3.isChecked()) {
-            v.removeArrayList(cb3.getText().toString());
-            adapter.notifyDataSetChanged();
-        }
-        else if(cb4.isChecked()) {
-            v.addArrayList(cb4.getText().toString());
-            adapter.notifyDataSetChanged();
-
-        }
-        else if(!cb4.isChecked()) {
-            v.removeArrayList(cb4.getText().toString());
-            adapter.notifyDataSetChanged();
+        if (buttonView.getId() == cb4.getId()) {
+            if(cb4.isChecked()) {
+                v.addArrayList(cb4.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+            else {
+                v.removeArrayList(cb4.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        v.updateTodayExerciseList();
+        v.updateListView();
+        super.onDestroy();
+    }
 
     public void onClick(View view) {
         Intent intent = new Intent(ExerciseActivity.this, ExplainActivity.class);
