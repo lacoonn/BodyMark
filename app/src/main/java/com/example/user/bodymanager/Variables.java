@@ -2,6 +2,7 @@ package com.example.user.bodymanager;
 
 import android.app.Application;
 
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -28,6 +29,10 @@ public class Variables extends Application {
     private static ExerciseManager exManager = ExerciseManager.getInstance();
     private static MuscleExerciseManager meManager = MuscleExerciseManager.getInstance();
     private ArrayList<String> arrayList = new ArrayList<String>(); // 장바구니
+    ListView todayListView;
+    TodayListViewAdapter todayadapter;
+
+    //-------------------------function declaration---------------------
 
     public  ExerciseManager getExManager() {
         return exManager;
@@ -49,7 +54,12 @@ public class Variables extends Application {
         arrayList.remove(n);
     }
 
-    
+    public void updateTodayExerciseList() {
+        todayExerciseList.clearExerciseList();
+        for(String i : arrayList) {
+            todayExerciseList.addExercise(exManager.searchName(i));
+        }
+    }
 
 
     public Muscle[] getMuscles() {
@@ -58,5 +68,15 @@ public class Variables extends Application {
 
     public void setMuscles(Muscle[] muscles) {
         this.muscles = muscles;
+    }
+
+    public void updateListView() {
+        ArrayList<String> temp = getArrayList();
+        todayadapter.clearItem();
+        for(String i : temp) {
+            todayadapter.addItem(i);
+            Toast.makeText(this, i, Toast.LENGTH_SHORT).show();
+        }
+        todayadapter.notifyDataSetChanged();
     }
 }
