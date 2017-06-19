@@ -80,17 +80,4 @@ public class CalenderActivity extends BodygraphActivity {
         calendar.setOnDateChangeListener(temp);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // todayExerciseList의 인자들을 arrayList에 복사한다
-        v = (Variables) getApplication();
-        ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
-        v.getArrayList().clear();
-        for(Exercise i : tempExerciseList) {
-            v.addArrayList(i.getName());
-        }
-        // updateListView를 호출한다
-        v.updateListView();
-    }
 }

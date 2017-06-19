@@ -108,12 +108,16 @@ public class CalendarPopup extends Activity {
                 Variables v = (Variables) getApplication();
                 v.todayExerciseList.setExerciseArray(exerciseList.getExerciseArray());
 
-                // 운동들이 todayExerciseList에 잘 들어갔는지 확인하는 파트
-                ArrayList<Exercise> temp = v.todayExerciseList.getExerciseArray();
-                for(Exercise i : temp) {
-                    Toast.makeText(CalendarPopup.this, i.getName(), Toast.LENGTH_SHORT).show();
+                // todayExerciseList의 인자들을 arrayList에 복사한다 -------------------------------
+                ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
+                v.getArrayList().clear();
+                for(Exercise i : tempExerciseList) {
+                    v.addArrayList(i.getName());
                 }
+                // updateListView를 호출한다 -------------------------------------------------------
+                v.updateListView();
 
+                // 액티비티 종료 -------------------------------------------------------------------
                 finish();
                 break;
         }

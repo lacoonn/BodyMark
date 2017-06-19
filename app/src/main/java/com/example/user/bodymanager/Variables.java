@@ -2,9 +2,14 @@ package com.example.user.bodymanager;
 
 import android.app.Application;
 
+import android.content.Context;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,7 +62,8 @@ public class Variables extends Application {
     public void updateTodayExerciseList() {
         todayExerciseList.clearExerciseList();
         for(String i : arrayList) {
-            todayExerciseList.addExercise(exManager.searchName(i));
+            //todayExerciseList.addExercise(exManager.searchName(i));
+            todayExerciseList.addExercise(new Exercise(i, 0, null, null, 0, null, null, null, null));
         }
     }
 
@@ -70,13 +76,34 @@ public class Variables extends Application {
         this.muscles = muscles;
     }
 
+    public void saveTodayExerciseListToFile() {
+        Context context = this;
+        FileOutputStream fos = null;
+        try {
+            String fileNameString = String.format("%04d%02d%02d.bin", year, month, day);
+            fos = context.openFileOutput(fileNameString, 0);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(todayExerciseList);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void updateListView() {
+        // 메인 ListView에 arrayList의 데이터를 추가합니다------------------------------------------
         ArrayList<String> temp = getArrayList();
         todayadapter.clearItem();
         for(String i : temp) {
             todayadapter.addItem(i);
-            Toast.makeText(this, i, Toast.LENGTH_SHORT).show();
         }
         todayadapter.notifyDataSetChanged();
+
+        // 메인 ListView를 업데이트 할 때 todayExerciseList를 업데이트하고 파일로 저장합니다.
+        updateTodayExerciseList();
+        saveTodayExerciseListToFile();
     }
 }
