@@ -52,7 +52,7 @@ public class CalendarPopup extends Activity {
         //String openFileName = "" + year + (month + 1) + day + ".bin";
         String openFileName = String.format("%4d%02d%02d.bin", year, month + 1, day);
         try {
-            Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
             FileInputStream fis = new FileInputStream(Variables.path + openFileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
             //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
@@ -82,7 +82,6 @@ public class CalendarPopup extends Activity {
 
         // 그날의 운동 목록을 출력하는 리스트뷰
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, LIST_MENU);
-        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, LIST_MENU);
         ListView listview = (ListView) findViewById(R.id.exercise_list) ;
         listview.setAdapter(adapter) ;
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,6 +107,14 @@ public class CalendarPopup extends Activity {
                 Toast.makeText(CalendarPopup.this, "위의 운동들을 오늘의 운동 목록에 복사합니다.", Toast.LENGTH_SHORT).show();
                 Variables v = (Variables) getApplication();
                 v.todayExerciseList.setExerciseArray(exerciseList.getExerciseArray());
+
+                // 운동들이 todayExerciseList에 잘 들어갔는지 확인하는 파트
+                ArrayList<Exercise> temp = v.todayExerciseList.getExerciseArray();
+                for(Exercise i : temp) {
+                    Toast.makeText(CalendarPopup.this, i.getName(), Toast.LENGTH_SHORT).show();
+                }
+
+                finish();
                 break;
         }
     }
