@@ -15,9 +15,8 @@ import java.util.Date;
  * Created by jum on 2017-06-16.
  */
 
+// Variables v = (Variables) getApplication()  으로 선언한 후, v에 저장된 변수를 사용 가능
 public class Variables extends Application {
-//Variables v = (Variables) getApplication()  으로 선언한 후, v에 저장된 변수를 사용 가능
-
     static private Calendar calendar = Calendar.getInstance();
 
     static public final int  year = calendar.get(Calendar.YEAR);

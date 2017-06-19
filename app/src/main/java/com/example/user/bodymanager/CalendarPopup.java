@@ -29,7 +29,7 @@ public class CalendarPopup extends Activity {
     private int month;
     private int day;
     private Context context = null;
-
+    ExerciseList exerciseList = null;
 
     @Override
     protected void onCreate(Bundle savedInstantState) {
@@ -49,7 +49,6 @@ public class CalendarPopup extends Activity {
 
 
         // 읽어온 날짜를 이용해서 해당 날의 운동 목록을 가지고 온다
-        ExerciseList exerciseList = null;
         //String openFileName = "" + year + (month + 1) + day + ".bin";
         String openFileName = String.format("%4d%02d%02d.bin", year, month + 1, day);
         try {
@@ -74,7 +73,7 @@ public class CalendarPopup extends Activity {
         if(exerciseList != null) {
             //Toast.makeText(CalendarPopup.this, "ExerciseList에서 운동 이름을 뽑아냅니다!", Toast.LENGTH_SHORT).show();
             for(int i = 0; i < exerciseList.getLength(); i++) {
-                LIST_MENU.add(exerciseList.getExercise(i).getName());
+                LIST_MENU.add(exerciseList.getExerciseByIndex(i).getName());
             }
         }
         else {
@@ -107,6 +106,8 @@ public class CalendarPopup extends Activity {
                 break;
             case R.id.popup_duplicate:
                 Toast.makeText(CalendarPopup.this, "위의 운동들을 오늘의 운동 목록에 복사합니다.", Toast.LENGTH_SHORT).show();
+                Variables v = (Variables) getApplication();
+                v.todayExerciseList.setExerciseArray(exerciseList.getExerciseArray());
                 break;
         }
     }
