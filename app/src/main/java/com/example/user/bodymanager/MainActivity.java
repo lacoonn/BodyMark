@@ -47,76 +47,58 @@ public class MainActivity extends BodygraphActivity {
 
 //=========================================|
 
-
-    //image view
-        if(storageWritable()) {
-            createBMP(this);
-            Toast.makeText(this, "storage Access Succeed", Toast.LENGTH_SHORT).show();
-        }
-        else if(storageReadable()) {
-            Toast.makeText(this, "storage write Denied", Toast.LENGTH_SHORT).show();
-        }
-
-        if(storageReadable()) {
-        for(int i=0 ; i < m.length ; ++i) {
-        ImageView imgview;
-                /*
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());  //파일에서 읽어옴
-                ImageView myImage = (ImageView) findViewById(m[i].getResource_num());   //이미지 설정
-                myImage.setImageBitmap(myBitmap);   //읽어온 bitmap으로 이미지 변경
-                */
-                try{
-                    imgview = (ImageView)findViewById(bodygraphId[i]);
-                    String imgpath = "data/user/0/com.example.user.bodymanager/files/" + m[i].getName() + ".png";
-                    Bitmap bm = BitmapFactory.decodeFile(imgpath);
-                    imgview.setImageBitmap(bm);
-                }catch(Exception e){Toast.makeText(getApplicationContext(), "load error", Toast.LENGTH_LONG).show();}
+        createBMP(this);
+        applyBMP();
 
 
-            //ImageView myImage = (ImageView) findViewById(m[i].getResource_num());
-        }
 
-        }
-        else {
-            Toast.makeText(this, "storage Access Error", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void onClick(View view) {
+        Intent intent1 = new Intent(MainActivity.this, ExerciseActivity.class);
+        Intent intent2 = new Intent(MainActivity.this, CalenderActivity.class);
+        Intent intent3 = new Intent(MainActivity.this, CustomActivity.class);
+        Intent intent4 = new Intent(MainActivity.this, SettingsActivity.class);
 
         switch (view.getId()) {
             case R.id.main_btnBody:
                 Toast.makeText(this, "몸입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_chest, "bodygraph_" + R.id.main_bodygraph_chest, R.drawable.chest_yellow);
-                startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+                startActivity(intent1);
+                //intent1.putExtra("data","몸 운동");
+
                 v.todayadapter.addItem("exercise123") ;
+
                 break;
             case R.id.main_btnLeftarm:
                 Toast.makeText(this, "팔입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_biceps, "bodygraph_" + R.id.main_bodygraph_biceps, R.drawable.biceps_yellow);
-                startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+                startActivity(intent1);
+                intent1.putExtra("data","팔 운동");
                 break;
             case R.id.main_btnRightarm:
                 Toast.makeText(this, "팔입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_triceps, "bodygraph_" + R.id.main_bodygraph_triceps, R.drawable.triceps_yellow);
-                startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+                startActivity(intent1);
+                intent1.putExtra("data","팔 운동");
                 break;
             case R.id.main_btnLowerbody:
                 Toast.makeText(this, "다리입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_shoulders, "bodygraph_" + R.id.main_bodygraph_shoulders, R.drawable.shoulders_yellow);
-                startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+                startActivity(intent1);
+                intent1.putExtra("data","다리 운동");
                 break;
             case R.id.main_btnCalendar:
                 Toast.makeText(this, "운동 계획표", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, CalenderActivity.class));
+                startActivity(intent2);
                 break;
             case R.id.main_btnCustom:
                 Toast.makeText(this, "나만의 운동", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, CustomActivity.class));
+                startActivity(intent3);
                 break;
             case R.id.main_btnSettings:
                 Toast.makeText(this, "설정", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                startActivity(intent4);
                 break;
             case R.id.main_btnReverse:
                 changeVisibility();

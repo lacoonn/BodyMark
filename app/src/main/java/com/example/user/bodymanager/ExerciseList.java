@@ -45,8 +45,8 @@ public class ExerciseList implements Serializable {
 
     public int getIndexByName(String name) {
         // 해당하는 이름의 운동이 없으면 -1을 return
-        for(int i = 0; i < exercises.size(); i++) {
-            if(exercises.get(i).getName() == name)
+        for(int i = 0; ; i++) {
+            if(exercises.get(i).getName().equals(name))
                 return i;
         }
         return  -1;

@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 /**
  * Created by User on 2017-05-25.
@@ -60,7 +59,6 @@ public class CalenderActivity extends BodygraphActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         // CalendarView
         CalendarView calendar = (CalendarView)findViewById(R.id.calendar);

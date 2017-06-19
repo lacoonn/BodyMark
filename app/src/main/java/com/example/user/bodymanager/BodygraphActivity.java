@@ -177,6 +177,24 @@ public class BodygraphActivity extends Activity {
         }
     }
 
+    public void applyBMP()
+    {
+        Variables v = (Variables) getApplication();
+        Muscle []m = v.getMuscles();
+
+        for(int i=0 ; i < m.length ; ++i) {
+            ImageView imgview;
+
+            try{
+                imgview = (ImageView)findViewById(bodygraphId[i]);
+                String imgpath = "data/user/0/com.example.user.bodymanager/files/" + m[i].getName() + ".png";
+                Bitmap bm = BitmapFactory.decodeFile(imgpath);
+                imgview.setImageBitmap(bm);
+            }catch(Exception e){Toast.makeText(getApplicationContext(), "Load error", Toast.LENGTH_LONG).show();}
+
+        }
+
+    }
     public boolean storageWritable()
     {
         String state = Environment.getExternalStorageState();

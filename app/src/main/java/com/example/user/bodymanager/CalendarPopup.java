@@ -29,7 +29,9 @@ public class CalendarPopup extends Activity {
     private int month;
     private int day;
     private Context context = null;
+
     ExerciseList exerciseList = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstantState) {
@@ -49,6 +51,7 @@ public class CalendarPopup extends Activity {
 
 
         // 읽어온 날짜를 이용해서 해당 날의 운동 목록을 가지고 온다
+
         //String openFileName = "" + year + (month + 1) + day + ".bin";
         String openFileName = String.format("%4d%02d%02d.bin", year, month + 1, day);
         try {
