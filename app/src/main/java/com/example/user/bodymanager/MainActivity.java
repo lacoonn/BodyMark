@@ -65,7 +65,7 @@ public class MainActivity extends BodygraphActivity {
                 Toast.makeText(this, "몸입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_chest, "bodygraph_" + R.id.main_bodygraph_chest, R.drawable.chest_yellow);
                 startActivity(intent1);
-                //intent1.putExtra("data","몸 운동");
+                intent1.putExtra("data","몸 운동");
 
                 v.todayadapter.addItem("exercise123") ;
 

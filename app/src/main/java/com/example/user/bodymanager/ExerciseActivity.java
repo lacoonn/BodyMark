@@ -45,7 +45,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         listView = (ListView) findViewById(R.id.listView);
         textView = (TextView) findViewById(R.id.textView_name);
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        String name = intent.getStringExtra("data");
 
 
         cb1 = (CheckBox)findViewById(R.id.checkBox1);
