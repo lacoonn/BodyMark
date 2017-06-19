@@ -22,9 +22,9 @@ public class MainActivity extends BodygraphActivity {
 Variables v = (Variables) getApplication();
 
         Muscle []m = new Muscle[3];
-        m[0] = new Muscle("abs_green");
-        m[1] = new Muscle("adductor_green");
-        m[2] = new Muscle("biceps_green");
+        m[0] = new Muscle("bicep");
+        m[1] = new Muscle("chest");
+        m[2] = new Muscle("deltoid");
 
 
         m[0].setDamage(150);
