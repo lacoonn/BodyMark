@@ -1,12 +1,13 @@
 package com.example.user.bodymanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by woochan on 2017-06-18.
  */
 
-public class ExerciseList {
+public class ExerciseList implements Serializable {
     private int year;
     private int month;
     private int day;
@@ -30,7 +31,7 @@ public class ExerciseList {
         return day;
     }
 
-    public Exercise getExercise(int order) {
+    public Exercise getExerciseByIndex(int order) {
         return exercises.get(order);
     }
 
@@ -44,15 +45,23 @@ public class ExerciseList {
 
     public int getIndexByName(String name) {
         // 해당하는 이름의 운동이 없으면 -1을 return
-        for(int i = 0; ; i++) {
+        for(int i = 0; i < exercises.size(); i++) {
             if(exercises.get(i).getName() == name)
                 return i;
         }
-  //      return  -1;
+        return  -1;
     }
 
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
+    }
+
+    public void setExerciseArray(ArrayList<Exercise> pastExercises) {
+        exercises = pastExercises;
+    }
+
+    public ArrayList<Exercise> getExerciseArray() {
+        return exercises;
     }
 
     public void removeExercise(int order) {

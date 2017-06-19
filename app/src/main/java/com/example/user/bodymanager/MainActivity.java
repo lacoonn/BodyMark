@@ -6,25 +6,29 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.File;
-import android.content.Context;
+import java.util.ArrayList;
+
 public class MainActivity extends BodygraphActivity {
+
+    Variables v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //InitiateBodygraphColors();
+        setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, SplashActivity.class));
 
 //variables initializing ==================|
-Variables v = (Variables) getApplication();
+        v = (Variables) getApplication();
+
 
         Muscle []m = new Muscle[3];
-        m[0] = new Muscle("abs_green");
-        m[1] = new Muscle("adductor_green");
-        m[2] = new Muscle("biceps_green");
+        m[0] = new Muscle("bicep");
+        m[1] = new Muscle("chest");
+        m[2] = new Muscle("deltoid");
 
 
         m[0].setDamage(150);
@@ -37,11 +41,11 @@ Variables v = (Variables) getApplication();
         m[2].setResource_num(bodygraphDrawable[2]);
 
         v.setMuscles(m);
-
+        v.todayListView = (ListView) findViewById(R.id.main_todaylistview);
+        v.todayadapter = new TodayListViewAdapter();
+        v.todayListView.setAdapter(v.todayadapter);
 
 //=========================================|
-        setContentView(R.layout.activity_main);
-        startActivity(new Intent(this, SplashActivity.class));
 
 
     //image view
@@ -85,6 +89,7 @@ Variables v = (Variables) getApplication();
                 Toast.makeText(this, "몸입니다", Toast.LENGTH_SHORT).show();
                 //setBodygraphColor(R.id.main_bodygraph_chest, "bodygraph_" + R.id.main_bodygraph_chest, R.drawable.chest_yellow);
                 startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
+                v.todayadapter.addItem("exercise123") ;
                 break;
             case R.id.main_btnLeftarm:
                 Toast.makeText(this, "팔입니다", Toast.LENGTH_SHORT).show();
@@ -126,5 +131,6 @@ Variables v = (Variables) getApplication();
         Toast.makeText(this, "운동", Toast.LENGTH_SHORT).show();
 
     }
+
 
 }
