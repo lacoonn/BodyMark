@@ -1,5 +1,7 @@
 package com.example.user.bodymanager;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -30,30 +32,32 @@ public class ExerciseManager {
 
 
     public Exercise searchName(String name) { // name 기반 탐색
-        Exercise ex = null;
+        Exercise ex = new Exercise();
 
         Exercise temp = new Exercise();
         temp.setName(name);
 
         for (int idx = 0; idx<this.exlist.size(); idx++) {
-            if (this.compareToName(temp, this.exlist.get(idx)))
+            if (this.compareToName(temp, this.exlist.get(idx))) {
                 ex = this.exlist.get(idx);
+                break;
+            }
         }
 
         return ex;
     }
-    public Exercise searchPart(String part) { // part 기반 탐색
-        Exercise ex = null;
+    public ArrayList<Exercise> searchPart(String part) { // part 기반 탐색
+        ArrayList<Exercise> ex = new ArrayList<Exercise>();
 
         for (int idx = 0; idx<this.exlist.size(); idx++) {
             if (exlist.get(idx).getPart().contains(part)) // 만약 part를 포함하고 있으면
-                ex = this.exlist.get(idx);
+                ex.add(this.exlist.get(idx));
         }
 
         return ex;
     }
     private boolean compareToName(Exercise o1, Exercise o2) {
-        return o1.getName().toLowerCase().equals(o2.getName().toLowerCase());
+        return o1.getName().toString().equals(o2.getName().toString());
     }
 
 }

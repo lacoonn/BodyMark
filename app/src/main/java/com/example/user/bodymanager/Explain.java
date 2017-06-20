@@ -10,14 +10,23 @@ import android.graphics.drawable.Drawable;
 public class Explain {
     private Drawable image;
     private String text;
+    private boolean vis;
 
     Explain(){};
-    Explain(Drawable img, String t)
+    Explain(Drawable img, String t, boolean v)
     {
         image = img;
         text = t;
+        vis = v;
     }
 
+    public void setVis(boolean vis) {
+        this.vis = vis;
+    }
+
+    public boolean isVis() {
+        return vis;
+    }
 
     public void setImage(Drawable image) {
         this.image = image;

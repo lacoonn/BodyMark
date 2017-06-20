@@ -101,18 +101,15 @@ public class SettingsActivity extends BodygraphActivity {
         if (strData == null || strData.equals("")) {
             return;
         }
-        Toast.makeText(this, "(전전)파일이 저장되었습니다.", Toast.LENGTH_SHORT).show();
         FileOutputStream fosMemo = null;
 
         try {
 
             fosMemo = mContext.openFileOutput(FILE_NAME, 0);
-            Toast.makeText(this, "(전)파일이 저장되었습니다.", Toast.LENGTH_SHORT).show();
             fosMemo.write(strData.getBytes());
             fosMemo.close();
             //Toast.makeText(this, mContext.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "파일이 저장되었습니다.", Toast.LENGTH_SHORT).show();
-
+            readInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }
