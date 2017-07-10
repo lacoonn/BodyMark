@@ -2,14 +2,18 @@ package com.example.user.bodymanager;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static com.example.user.bodymanager.R.drawable.dummy;
 
 /**
  * Created by user on 2017-06-19.
@@ -41,13 +45,19 @@ public class ListViewAdapter extends BaseAdapter {
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        ImageView Image = (ImageView) convertView.findViewById(R.id.image) ;
-        TextView Seq = (TextView) convertView.findViewById(R.id.text) ;
+        ImageView Image = (ImageView) convertView.findViewById(R.id.image_explain) ;
+        TextView Seq = (TextView) convertView.findViewById(R.id.text_explain) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         Explain listViewItem = listViewItemList.get(position);
+        context.getResources().getIdentifier( "icon", "drawable", null );
 
         // 아이템 내 각 위젯에 데이터 반영
+        if(listViewItem.isVis() == false)
+            Image.setVisibility(View.GONE);
+        else
+            Image.setVisibility(View.VISIBLE);
+
         Image.setImageDrawable(listViewItem.getImage());
         Seq.setText(listViewItem.getText());
 
@@ -67,9 +77,10 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable icon, String title) {
+    public void addItem(Drawable icon,  boolean v, String title) {
         Explain item = new Explain();
 
+        item.setVis(v);
         item.setImage(icon);
         item.setText(title);
 

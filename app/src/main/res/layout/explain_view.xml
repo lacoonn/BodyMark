@@ -5,15 +5,16 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/image_explain"
         android:layout_width="match_parent"
-        android:layout_height="435dp" />
+        android:layout_height="300dp" />
+
     <TextView
-        android:text="Sequence"
+        android:id="@+id/text_explain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/text"
+        android:text="Sequence"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="@color/darkblue"/>
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 </LinearLayout>

@@ -45,7 +45,6 @@ public class TodayListViewAdapter extends BaseAdapter {
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         TextView titleTextView = (TextView) convertView.findViewById(R.id.todayitem_textview);
-        Button closeButton = (Button) convertView.findViewById(R.id.todayitem_closebtn);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         TodayListViewItem todaylistViewItem = todaylistViewItemList.get(position);

@@ -17,13 +17,4 @@
         android:textColor="@color/black"
         android:textSize="30dp" />
 
-    <Button
-        android:id="@+id/todayitem_closebtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:background="@drawable/cancel" />
-
 </RelativeLayout>

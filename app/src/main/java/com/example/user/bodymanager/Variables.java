@@ -33,36 +33,16 @@ public class Variables extends Application {
     public ExerciseList todayExerciseList = new ExerciseList(year, month, day);
     private static ExerciseManager exManager = ExerciseManager.getInstance();
     private static MuscleExerciseManager meManager = MuscleExerciseManager.getInstance();
-    private static ArrayList<Pic> PicManager = new ArrayList<Pic>();
-    private ArrayList<String> arrayList = new ArrayList<String>(); // 장바구니
+    private static ArrayList<String> arrayList = new ArrayList<String>(); // 장바구니
+    int visibility;
     ListView todayListView;
     TodayListViewAdapter todayadapter;
 
+    static public int gender;
+    static public int age;
+    static public int weight;
+    static public int height;
     //-------------------------function declaration---------------------
-
-
-    public Pic PsearchName(String name) { // name 기반 탐색
-        Pic ex = null;
-
-        Pic temp = new Pic();
-        temp.setName(name);
-
-        for (int idx = 0; idx<this.PicManager.size(); idx++) {
-            if (this.compareToName(temp, this.PicManager.get(idx)))
-                ex = this.PicManager.get(idx);
-        }
-
-        return ex;
-    }
-
-    private boolean compareToName(Pic o1, Pic o2) {
-        return o1.getName().toLowerCase().equals(o2.getName().toLowerCase());
-    }
-
-
-    public ArrayList<Pic> getPicManager(){
-        return PicManager;
-    }
 
     public  ExerciseManager getExManager() {
         return exManager;

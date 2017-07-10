@@ -3,6 +3,7 @@
     package="com.example.user.bodymanager">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
@@ -33,6 +34,8 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".BodygraphActivity" />
         <activity android:name=".CalendarPopup" />
+        <activity android:name=".ExplainActivity" />
+        <activity android:name=".WebActivity" />
 
     </application>
 
