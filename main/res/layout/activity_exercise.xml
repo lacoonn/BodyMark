@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="350dp">
+
+            <ImageView
+                android:id="@+id/main_bodygraph_body"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/body"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_abs"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/abs_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_adductor"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/adductor_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_biceps"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/biceps_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_calves"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/calves_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_chest"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/chest_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_obliques"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/obliques_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_quads"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/quads_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_shoulders"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/shoulders_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_traps"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/traps_green"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_body2"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/body2"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_calves2"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/calves2_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_glutes"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/glutes_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_hamstrings"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/hamstrings_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_lats"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/lats_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_shoulders2"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/shoulders2_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_traps2"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/traps2_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_triceps"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/triceps_green"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/main_bodygraph_end"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#00ffff"
+                android:gravity="center"
+                android:text="선택 목록"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="운동명"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="운동명"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/main_todayLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#00ffff"
+            android:gravity="center"
+            android:text="운동 목록"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <ScrollView
+            android:id="@+id/main_todayScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee">
+
+            <LinearLayout
+                android:id="@+id/main_todayScrollLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="2dp"
+                    android:background="#ffff00"
+                    android:onClick="onClickExercise"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="운동명"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:background="@drawable/zoom" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="2dp"
+                    android:background="#ffff00"
+                    android:onClick="onClickExercise"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="50dp"
+                        android:text="운동명"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:background="@drawable/zoom" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
