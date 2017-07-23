@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.bodymanager">
 
-    //SD카드 접근 권한
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
@@ -33,6 +33,9 @@
         <activity android:name=".ExerciseActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".BodygraphActivity" />
+        <activity android:name=".CalendarPopup" />
+        <activity android:name=".ExplainActivity" />
+        <activity android:name=".WebActivity" />
 
     </application>
 
