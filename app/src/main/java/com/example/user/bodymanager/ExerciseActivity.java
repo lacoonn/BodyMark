@@ -2,13 +2,17 @@ package com.example.user.bodymanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+>>>>>>> f5c80f7f8143ad14dc21f44d97796b7eefcb495a
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+<<<<<<< HEAD
 import android.widget.Toast;
 
 
@@ -17,6 +21,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+=======
+
+>>>>>>> f5c80f7f8143ad14dc21f44d97796b7eefcb495a
 import java.util.ArrayList;
 
 /**
