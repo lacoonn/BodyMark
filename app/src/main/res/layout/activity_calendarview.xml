@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -19,4 +20,27 @@
 
     </CalendarView>
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
+
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minDate="04/01/2013"
+        android:maxDate="112/31/2018"
+        android:focusedMonthDateColor="@color/darkblue"
+        android:unfocusedMonthDateColor="@color/darkorange"
+        android:selectedWeekBackgroundColor="@color/white"
+        android:showWeekNumber="false"
+        android:weekSeparatorLineColor="@color/black">
+
+    </CalendarView>
+
+>>>>>>> f5c80f7f8143ad14dc21f44d97796b7eefcb495a
 </LinearLayout>
