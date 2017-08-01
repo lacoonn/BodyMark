@@ -6,6 +6,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Calendar;
+
 public class MainActivity extends BodygraphActivity {
 
     Variables v;
@@ -27,7 +33,7 @@ public class MainActivity extends BodygraphActivity {
 //=========================================|
 
         setMuscleExercise();
-        readDamage();
+        readPreviousDamage();
         applyPNG();
 
     }
@@ -88,6 +94,8 @@ public class MainActivity extends BodygraphActivity {
     protected void onResume() {
         super.onResume();
         applyPNG();
+        v.updateListView();
+        //v.updateTodayExerciseList();
     }
 
 
@@ -98,6 +106,38 @@ public class MainActivity extends BodygraphActivity {
         int id = view.getId();
         Toast.makeText(this, "운동", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void loadTodayExercise()
+    {
+        ExerciseList exerciseList;
+        v = (Variables)getApplication();
+        Calendar date = Calendar.getInstance();
+
+        //오늘날짜 파일 열기
+        String openFileName = String.format("%04d%02d%02d   .bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
+
+        try {
+            //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
+            FileInputStream fis = new FileInputStream(Variables.path + openFileName);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
+            exerciseList = (ExerciseList) ois.readObject();
+            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
+
+            for(Exercise e : exerciseList.getExerciseArray())
+            {
+                v.addArrayList(e.getName());
+            }
+
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
