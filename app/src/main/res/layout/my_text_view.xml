@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
@@ -10,17 +9,4 @@
     android:textSize="21sp"
     android:textColor="#000000"
     android:minHeight="34dp"
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceSmall"
-    android:gravity="center_vertical"
-    android:paddingStart="7dip"
-    android:textSize="21sp"
-    android:textColor="#000000"
-    android:minHeight="34dp"
->>>>>>> f5c80f7f8143ad14dc21f44d97796b7eefcb495a
     />

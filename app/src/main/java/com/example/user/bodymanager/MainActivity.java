@@ -84,11 +84,6 @@ public class MainActivity extends BodygraphActivity {
     }
 
     @Override
-<<<<<<< HEAD
-    protected void onResume() {
-        super.onResume();
-        calculateDamage(v.getArrayList());
-=======
     protected void onPause()
     {
         super.onPause();
@@ -98,7 +93,6 @@ public class MainActivity extends BodygraphActivity {
     @Override
     protected void onResume() {
         super.onResume();
->>>>>>> f5c80f7f8143ad14dc21f44d97796b7eefcb495a
         applyPNG();
         v.updateListView();
         //v.updateTodayExerciseList();
