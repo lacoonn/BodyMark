@@ -49,7 +49,6 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-        calculateDamage(v.getArrayList());
         applyPNG();
 
         ArrayList<Exercise> exlist;
@@ -140,7 +139,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // 체크박스를 클릭해서 상태가 바꾸었을 경우 호출되는 콜백 메서드
-        Variables v = (Variables) getApplication();
+        v = (Variables) getApplication();
 
         if ( !flag ) return;
 

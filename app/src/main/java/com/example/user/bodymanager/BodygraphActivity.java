@@ -382,15 +382,15 @@ public abstract class BodygraphActivity extends Activity {
             }
     }
 
-    public void readDamage()
+    public void readPreviousDamage()
     {
         ExerciseList exerciseList;
         v = (Variables)getApplication();
         Calendar date = Calendar.getInstance();
 
-        for(int i = -7;i<0;++i)
+        for(int i = 0;i<7;++i)
         {
-            date.add(Calendar.DATE, i); //i 일 전 날짜
+            date.add(Calendar.DATE, -1); //-1 일 전 날짜, 총 -7일까지 계산
 
             //해당 파일 열기
             String openFileName = String.format("%04d%02d%02d   .bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
