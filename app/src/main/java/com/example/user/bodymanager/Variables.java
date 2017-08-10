@@ -49,7 +49,7 @@ public class Variables extends Application {
         return meManager;
     }
 
-    public ArrayList<String> getArrayList() {
+    public ArrayList<String> getSelectedExerciseList() {
         return SelectedExerciseList;
     }
 
@@ -93,6 +93,22 @@ public class Variables extends Application {
             e.printStackTrace();
         }
 
+    }
+
+    //MainActivity의 '오늘의 운동' 세팅
+    public void updateMainListView() {
+        // 메인 ListView에 selectedExerciseList의 데이터를 추가합니다------------------------------------------
+        ArrayList<String> temp = getSelectedExerciseList();
+        todayAdapter.clearItem();
+        for(String i : temp) {
+            todayAdapter.addItem(i);
+        }
+
+        todayAdapter.notifyDataSetChanged();
+
+        // 메인 ListView를 업데이트 할 때 todayExerciseList를 업데이트하고 파일로 저장합니다.
+        updateTodayExerciseList();
+        saveTodayExerciseListToFile();
     }
 
 }
