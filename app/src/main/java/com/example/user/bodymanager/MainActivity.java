@@ -66,15 +66,12 @@ public class MainActivity extends BodygraphActivity {
                 startActivity(intent1);
                 break;
             case R.id.main_btnCalendar:
-                Toast.makeText(this, "운동 계획표", Toast.LENGTH_SHORT).show();
                 startActivity(intent2);
                 break;
             case R.id.main_btnCustom:
-                Toast.makeText(this, "나만의 운동", Toast.LENGTH_SHORT).show();
                 startActivity(intent3);
                 break;
             case R.id.main_btnSettings:
-                Toast.makeText(this, "설정", Toast.LENGTH_SHORT).show();
                 startActivity(intent4);
                 break;
             case R.id.main_btnReverse:
