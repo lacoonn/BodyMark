@@ -26,12 +26,13 @@ public class MainActivity extends BodygraphActivity {
         v = (Variables) getApplication();
 
         v.todayListView = (ListView) findViewById(R.id.main_todaylistview);
-        v.todayadapter = new TodayListViewAdapter();
-        v.todayListView.setAdapter(v.todayadapter);
+        v.todayAdapter = new TodayListViewAdapter();
+        v.todayListView.setAdapter(v.todayAdapter);
 
         readInfo();
 //=========================================|
 
+        loadTodayExercise();
         setMuscleExercise();
         readPreviousDamage();
         applyPNG();
@@ -94,8 +95,6 @@ public class MainActivity extends BodygraphActivity {
     protected void onResume() {
         super.onResume();
         applyPNG();
-        v.updateListView();
-        //v.updateTodayExerciseList();
     }
 
 

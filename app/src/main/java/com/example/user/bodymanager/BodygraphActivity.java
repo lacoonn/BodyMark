@@ -509,8 +509,6 @@ public abstract class BodygraphActivity extends Activity {
     }
     public void setMuscleExercise() {
         Variables v = (Variables) getApplication();
-        ArrayList<MuscleExercise> melist = new ArrayList<MuscleExercise>();
-        Exercise ex;
 
         loadingExercise(v.getExManager());
         loadingMuscleExercise(v.getMeManager(), v.getExManager());
@@ -518,6 +516,7 @@ public abstract class BodygraphActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+
         super.onBackPressed();
     }
 

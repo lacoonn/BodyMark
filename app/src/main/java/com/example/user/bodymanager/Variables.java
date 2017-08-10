@@ -29,10 +29,11 @@ public class Variables extends Application {
     public ExerciseList todayExerciseList = new ExerciseList(year, month, day);
     private static ExerciseManager exManager = ExerciseManager.getInstance();
     private static MuscleExerciseManager meManager = MuscleExerciseManager.getInstance();
-    private static ArrayList<String> arrayList = new ArrayList<String>(); // 장바구니
-    int visibility;
+    private static ArrayList<String> SelectedExerciseList = new ArrayList<String>(); // 장바구니
+
     ListView todayListView;
-    TodayListViewAdapter todayadapter;
+    TodayListViewAdapter todayAdapter;
+    ExerciseListViewAdapter exerciseAdapter;
 
     static public int gender;
     static public int age;
@@ -49,20 +50,20 @@ public class Variables extends Application {
     }
 
     public ArrayList<String> getArrayList() {
-        return arrayList;
+        return SelectedExerciseList;
     }
 
     public void addArrayList(String n){
-        arrayList.add(n);
+        SelectedExerciseList.add(n);
         Toast.makeText(this, n, Toast.LENGTH_SHORT).show();
     }
     public void removeArrayList(String n){
-        arrayList.remove(n);
+        SelectedExerciseList.remove(n);
     }
 
     public void updateTodayExerciseList() {
         todayExerciseList.clearExerciseList();
-        for(String i : arrayList) {
+        for(String i : SelectedExerciseList) {
             //todayExerciseList.addExercise(exManager.searchName(i));
             todayExerciseList.addExercise(new Exercise(i, 0, null, null, 0, null, null, null, null));
         }
@@ -94,17 +95,4 @@ public class Variables extends Application {
 
     }
 
-    public void updateListView() {
-        // 메인 ListView에 arrayList의 데이터를 추가합니다------------------------------------------
-        ArrayList<String> temp = getArrayList();
-        todayadapter.clearItem();
-        for(String i : temp) {
-            todayadapter.addItem(i);
-        }
-        todayadapter.notifyDataSetChanged();
-
-        // 메인 ListView를 업데이트 할 때 todayExerciseList를 업데이트하고 파일로 저장합니다.
-        updateTodayExerciseList();
-        saveTodayExerciseListToFile();
-    }
 }

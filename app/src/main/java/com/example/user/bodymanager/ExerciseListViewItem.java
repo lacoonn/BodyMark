@@ -1,10 +1,11 @@
 package com.example.user.bodymanager;
 
 /**
- * Created by User on 2017-06-19.
- */
+* Created by jum on 2017-08-09.
+*/
 
-public class TodayListViewItem {
+public class ExerciseListViewItem {
+
     private String titleStr ;
 
     public void setTitle(String title) {
@@ -14,5 +15,4 @@ public class TodayListViewItem {
     public String getTitle() {
         return this.titleStr;
     }
-
 }

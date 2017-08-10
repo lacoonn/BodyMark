@@ -166,7 +166,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     @Override
     protected void onDestroy() {
         v.updateTodayExerciseList();
-        v.updateListView();
+        updateMainListView();
         super.onDestroy();
     }
 
@@ -190,4 +190,31 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 break;
         }
     }
+
+    //MainActivity의 '오늘의 운동' 세팅
+    public void updateMainListView() {
+        // 메인 ListView에 selectedExerciseList의 데이터를 추가합니다------------------------------------------
+        ArrayList<String> temp = v.getArrayList();
+        v.todayAdapter.clearItem();
+        for(String i : temp) {
+            v.todayAdapter.addItem(i);
+        }
+        v.todayAdapter.notifyDataSetChanged();
+
+        // 메인 ListView를 업데이트 할 때 todayExerciseList를 업데이트하고 파일로 저장합니다.
+        v.updateTodayExerciseList();
+        v.saveTodayExerciseListToFile();
+    }
+
+    //ExerciseActivity의 운동 선택창 세팅
+    public void updateExerciseListView(ArrayList<String> exerciseName) {
+
+        // ExerciseListView에  데이터를 추가합니다------------------------------------------
+        v.exerciseAdapter.clearItem();
+        for(String i : exerciseName) {
+            v.exerciseAdapter.addItem(i);
+        }
+        v.exerciseAdapter.notifyDataSetChanged();
+    }   //oncreate의 운동.txt 읽어오는 구간에 ArrayList<String>을 추가하여 모든 운동을 다 읽으면 인자(exerciseName)로 준다.
+
 }
