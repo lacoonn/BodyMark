@@ -4,22 +4,24 @@ package com.example.user.bodymanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import static java.util.Collections.addAll;
-
 /**
  * Created by Seok on 2017-06-17.
  */
 
 public class Exercise implements Serializable {
     public Exercise(){};
+    public Exercise(String n)
+    {
+        name = n;
+    }
     public Exercise(String n, int np, ArrayList<String> p, String s, int sp,ArrayList<String> se, String t, String k, String ti)
     {
         name = n;
         partNum = np;
-        part = (ArrayList<String>)p.clone(); // deep copy
+        part = (ArrayList<String>) p.clone();
         simple = s;
         seqNum = sp;
-        seq = (ArrayList<String>)se.clone();; // deep copy
+        seq = (ArrayList<String>) se.clone();
         tip = t;
         kcal = k;
         tired = ti;

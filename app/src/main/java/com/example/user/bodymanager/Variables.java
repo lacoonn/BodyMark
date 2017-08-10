@@ -64,7 +64,7 @@ public class Variables extends Application {
         todayExerciseList.clearExerciseList();
         for(String i : arrayList) {
             //todayExerciseList.addExercise(exManager.searchName(i));
-            todayExerciseList.addExercise(new Exercise(i, 0, null, null, 0, null, null, null, null));
+            todayExerciseList.addExercise(new Exercise(i));
         }
     }
 

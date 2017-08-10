@@ -393,7 +393,7 @@ public abstract class BodygraphActivity extends Activity {
     }
 
     protected static void loadingMuscleExercise(MuscleExerciseManager meManager,ExerciseManager exManager)
-    { // fix complete 0809
+    {
         ArrayList<Exercise> exlist = new ArrayList<Exercise>();
         exlist = exManager.lists();
 
@@ -441,7 +441,7 @@ public abstract class BodygraphActivity extends Activity {
         return me;
     }
     protected void loadingExercise(ExerciseManager exlist) // load to file and insert ExManager
-    { // fix complete - 0809
+    {
         int linenum = 0;
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.exercise)));
@@ -449,6 +449,7 @@ public abstract class BodygraphActivity extends Activity {
             int partnum = 0, i;
             ArrayList<String> part = new ArrayList<String>();
             ArrayList<String> seq = new ArrayList<String>();
+
             String line;
             String nameExercise =""; //
             String simpleExercise ="";//
@@ -492,8 +493,6 @@ public abstract class BodygraphActivity extends Activity {
                     linenum = 0;
                     ex = new Exercise(nameExercise, partnum, part, simpleExercise, seqnum, seq,
                             tipExercise, kcalExercise, tiredExercise);
-                    part = new ArrayList<String>();
-                    seq = new ArrayList<String>();
                     exlist.add(ex);
                 }
             }
