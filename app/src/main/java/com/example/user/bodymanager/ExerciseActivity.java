@@ -130,7 +130,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
 
         if (buttonView.getId() == cb1.getId()) {
             if(cb1.isChecked()) {
-                v.addArrayList(cb1.getText().toString());
+                v.SelectExercise(cb1.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -140,7 +140,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         }
         if (buttonView.getId() == cb2.getId()) {
             if(cb2.isChecked()) {
-                v.addArrayList(cb2.getText().toString());
+                v.SelectExercise(cb2.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -150,7 +150,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         }
         if (buttonView.getId() == cb3.getId()) {
             if(cb3.isChecked()) {
-                v.addArrayList(cb3.getText().toString());
+                v.SelectExercise(cb3.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -167,6 +167,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     protected void onDestroy() {
         v.updateTodayExerciseList();
         v.updateMainListView();
+        v.saveTodayExerciseListToFile();
         super.onDestroy();
     }
 
@@ -192,9 +193,8 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
     }
 
 
-
-        //ExerciseActivity의 운동 선택창 세팅
-        public void updateExerciseListView(ArrayList<String> exerciseName) {
+    //ExerciseActivity의 운동 선택창 세팅
+    public void updateExerciseListView(ArrayList<String> exerciseName) {
         // ExerciseListView에  데이터를 추가합니다------------------------------------------
         v.exerciseAdapter.clearItem();
         for(String i : exerciseName) {

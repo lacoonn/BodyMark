@@ -111,7 +111,7 @@ public class CalendarPopup extends Activity {
                 ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
                 v.getSelectedExerciseList().clear();
                 for(Exercise i : tempExerciseList) {
-                    v.addArrayList(i.getName());
+                    v.SelectExercise(i.getName());
                 }
                 // updateListView를 호출한다 -------------------------------------------------------
                 v.updateMainListView();

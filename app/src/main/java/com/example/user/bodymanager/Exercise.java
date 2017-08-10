@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Exercise implements Serializable {
     public Exercise(){};
+    public Exercise(String s) { name = s; }
     public Exercise(String n, int np, ArrayList<String> p, String s, int sp,ArrayList<String> se, String t, String k, String ti)
     {
         name = n;

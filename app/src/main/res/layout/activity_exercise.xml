@@ -195,6 +195,15 @@
                 android:layout_height="350dp"
                 android:visibility="invisible" />
 
+            <ImageView
+                android:id="@+id/main_bodygraph_clave"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/calves2_green"
+                android:visibility="invisible" />
+
         </RelativeLayout>
 
         <LinearLayout

@@ -12,6 +12,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static com.example.user.bodymanager.BodygraphActivity.bodygraphDrawable;
+
 
 /**
  * Created by jum on 2017-06-16.
@@ -39,6 +41,8 @@ public class Variables extends Application {
     static public int age;
     static public int weight;
     static public int height;
+
+    private int[] savedPreviousDamage = new int[bodygraphDrawable.length];
     //-------------------------function declaration---------------------
 
     public  ExerciseManager getExManager() {
@@ -53,7 +57,7 @@ public class Variables extends Application {
         return SelectedExerciseList;
     }
 
-    public void addArrayList(String n){
+    public void SelectExercise(String n){
         SelectedExerciseList.add(n);
         Toast.makeText(this, n, Toast.LENGTH_SHORT).show();
     }
@@ -65,7 +69,7 @@ public class Variables extends Application {
         todayExerciseList.clearExerciseList();
         for(String i : SelectedExerciseList) {
             //todayExerciseList.addExercise(exManager.searchName(i));
-            todayExerciseList.addExercise(new Exercise(i, 0, null, null, 0, null, null, null, null));
+            todayExerciseList.addExercise(new Exercise(i));
         }
     }
 
@@ -97,7 +101,7 @@ public class Variables extends Application {
 
     //MainActivity의 '오늘의 운동' 세팅
     public void updateMainListView() {
-        // 메인 ListView에 selectedExerciseList의 데이터를 추가합니다------------------------------------------
+        // 메인 ListView에 selectedExerciseList의 데이터를 추가합니다
         ArrayList<String> temp = getSelectedExerciseList();
         todayAdapter.clearItem();
         for(String i : temp) {
@@ -111,4 +115,14 @@ public class Variables extends Application {
         saveTodayExerciseListToFile();
     }
 
+    //------------------------- getter & setter ---------------------
+
+    public int[] getSavedPreviousDamage() {
+        return savedPreviousDamage;
+    }
+
+    public void setsavedPreviousDamage(int[] damage) {
+        //deep copy
+        this.savedPreviousDamage = (int[]) damage.clone();
+    }
 }

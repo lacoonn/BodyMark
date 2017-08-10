@@ -29,6 +29,7 @@ public class MainActivity extends BodygraphActivity {
         v.todayAdapter = new TodayListViewAdapter();
         v.todayListView.setAdapter(v.todayAdapter);
 
+    //read user's info
         readInfo();
 //=========================================|
 
@@ -67,15 +68,15 @@ public class MainActivity extends BodygraphActivity {
                 startActivity(intent1);
                 break;
             case R.id.main_btnCalendar:
-                Toast.makeText(this, "운동 계획표", Toast.LENGTH_SHORT).show();
+
                 startActivity(intent2);
                 break;
             case R.id.main_btnCustom:
-                Toast.makeText(this, "나만의 운동", Toast.LENGTH_SHORT).show();
+
                 startActivity(intent3);
                 break;
             case R.id.main_btnSettings:
-                Toast.makeText(this, "설정", Toast.LENGTH_SHORT).show();
+
                 startActivity(intent4);
                 break;
             case R.id.main_btnReverse:
@@ -107,6 +108,7 @@ public class MainActivity extends BodygraphActivity {
 
     }
 
+    //앱이 처음 시작할 때 저장된 오늘의 운동을 읽어오는 함수
     public void loadTodayExercise()
     {
         ExerciseList exerciseList;
@@ -126,7 +128,7 @@ public class MainActivity extends BodygraphActivity {
 
             for(Exercise e : exerciseList.getExerciseArray())
             {
-                v.addArrayList(e.getName());
+                v.SelectExercise(e.getName());
             }
 
             fis.close();
