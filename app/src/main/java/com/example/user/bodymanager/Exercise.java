@@ -14,10 +14,10 @@ public class Exercise implements Serializable {
     {
         name = n;
         partNum = np;
-        part = p;
+        part = (ArrayList<String>)p.clone(); // deep copy
         simple = s;
         seqNum = sp;
-        seq = se;
+        seq = (ArrayList<String>)se.clone();; // deep copy
         tip = t;
         kcal = k;
         tired = ti;
