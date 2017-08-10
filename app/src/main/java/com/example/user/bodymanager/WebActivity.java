@@ -82,7 +82,6 @@ public class WebActivity extends BodygraphActivity {
             wv.loadUrl("http://tv.naver.com/v/328072");
         else if(n.equals("카프 레이즈 - 싱글 레그"))
             wv.loadUrl("http://tv.naver.com/v/328075");
-
     }
 
     @Override
@@ -106,7 +105,6 @@ public class WebActivity extends BodygraphActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
-
 }
 
 
