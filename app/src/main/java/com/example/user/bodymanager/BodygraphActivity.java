@@ -494,6 +494,8 @@ public abstract class BodygraphActivity extends Activity {
                     ex = new Exercise(nameExercise, partnum, part, simpleExercise, seqnum, seq,
                             tipExercise, kcalExercise, tiredExercise);
                     exlist.add(ex);
+                    part = new ArrayList<String>();
+                    seq = new ArrayList<String>();
                 }
             }
 
