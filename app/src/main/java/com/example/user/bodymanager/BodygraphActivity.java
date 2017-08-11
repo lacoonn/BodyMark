@@ -379,15 +379,8 @@ public abstract class BodygraphActivity extends Activity {
 
             String line;
             String nameExercise =""; //
-<<<<<<< HEAD
             String simpleExercise ="";//
             int seqnum = 0;
-=======
-
-            String simpleExercise ="";//
-            int seqnum = 0;
-
->>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
             String tipExercise =""; //
             String kcalExercise =""; //
             String tiredExercise =""; //
@@ -402,10 +395,6 @@ public abstract class BodygraphActivity extends Activity {
                             line = br.readLine();
                             part.add(line);
                         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
                         break;
                     case 2: simpleExercise = line;
                         break;
@@ -416,10 +405,6 @@ public abstract class BodygraphActivity extends Activity {
                             line = br.readLine();
                             seq.add(line);
                         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
                         break;
                     case 4: tipExercise = line;
                         break;

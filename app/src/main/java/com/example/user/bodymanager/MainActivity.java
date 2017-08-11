@@ -68,24 +68,12 @@ public class MainActivity extends BodygraphActivity {
                 startActivity(intent1);
                 break;
             case R.id.main_btnCalendar:
-<<<<<<< HEAD
                 startActivity(intent2);
                 break;
             case R.id.main_btnCustom:
                 startActivity(intent3);
                 break;
             case R.id.main_btnSettings:
-=======
-
-                startActivity(intent2);
-                break;
-            case R.id.main_btnCustom:
-
-                startActivity(intent3);
-                break;
-            case R.id.main_btnSettings:
-
->>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
                 startActivity(intent4);
                 break;
             case R.id.main_btnReverse:
