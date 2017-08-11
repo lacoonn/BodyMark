@@ -18,14 +18,6 @@
             android:layout_width="250dp"
             android:layout_height="350dp">
 
-            <Button
-                android:id="@+id/main_btnReverse"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_margin="30dp"
-                android:background="@drawable/reverse"
-                android:onClick="onClick" />
-
             <ImageView
                 android:id="@+id/main_bodygraph_body1"
                 android:layout_width="350dp"
@@ -201,15 +193,6 @@
                 android:id="@+id/main_bodygraph_end"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/main_bodygraph_clave"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/calves2_green"
                 android:visibility="invisible" />
 
         </RelativeLayout>
