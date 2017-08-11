@@ -62,9 +62,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.rhomboid,
             R.drawable.soleus,
             R.drawable.trapezius2,
-            R.drawable.tricep,
-
-            R.drawable.calves2_green
+            R.drawable.tricep               // backward 7
     };
     public static int bodygraphDrawable2[] = {
             R.drawable.bicep_y,
@@ -84,9 +82,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.rhomboid_y,
             R.drawable.soleus_y,
             R.drawable.trapezius2_y,
-            R.drawable.tricep_y,
-
-            R.drawable.calves2_yellow
+            R.drawable.tricep_y               // backward 7
     };
     public static int bodygraphDrawable3[] = {
             R.drawable.bicep_r,
@@ -106,9 +102,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.rhomboid_r,
             R.drawable.soleus_r,
             R.drawable.trapezius2_r,
-            R.drawable.tricep_r,
-
-            R.drawable.calves2_red
+            R.drawable.tricep_r               // backward 7
     };
     public static int bodygraphId[] = {
             R.id.main_bodygraph_bicep,
@@ -120,7 +114,6 @@ public abstract class BodygraphActivity extends Activity {
             R.id.main_bodygraph_quadricep,
             R.id.main_bodygraph_rectus,
             R.id.main_bodygraph_trapezius,
-
             R.id.main_bodygraph_deltoid2,
             R.id.main_bodygraph_glute,
             R.id.main_bodygraph_hamstring,
@@ -128,9 +121,7 @@ public abstract class BodygraphActivity extends Activity {
             R.id.main_bodygraph_rhomboid,
             R.id.main_bodygraph_soleus,
             R.id.main_bodygraph_trapezius2,
-            R.id.main_bodygraph_tricep,
-
-            R.id.main_bodygraph_clave
+            R.id.main_bodygraph_tricep
     };
 
 
@@ -175,9 +166,105 @@ public abstract class BodygraphActivity extends Activity {
             e.printStackTrace();
         }
     }
+    /*
+        public void createBMP(Context context)    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
+        {
 
-    // 데이터를 저장하고 바디그래프에 반영한다
-    public void applyPNG() {
+            Variables v = (Variables) getApplication();
+
+            ImageView img;
+            Bitmap bmIn;
+            for (int i = 0; i < bodygraphDrawable.length; ++i) {
+
+                bmIn = BitmapFactory.decodeResource(getResources(), bodygraphDrawable[i]);
+
+                // get image size
+                int width = bmIn.getWidth();
+                int height = bmIn.getHeight();
+                // create output bitmap
+                Bitmap bmOut = Bitmap.createBitmap(width, height, bmIn.getConfig());
+                // color information
+                int A, R, G, B;
+                int pixel;
+
+                // scan through all pixels
+                // calculate and change color
+                for (int x = 0; x < width; ++x) {
+                    for (int y = 0; y < height; ++y) {
+
+                        // get pixel color
+                        pixel = bmIn.getPixel(x, y);
+                        A = Color.alpha(pixel);
+                        R = Color.red(pixel);
+                        G = Color.green(pixel);
+                        B = Color.blue(pixel);
+
+                        if(R<=4 && G<=4 && B<=4)
+                            continue;
+
+                        // round-off color offset
+                        if(damage[i]<255) {
+                            R = damage[i];
+                            G = 255;
+                        }
+                        else{
+                            R=255;
+                            G=510-damage[i];
+                        }
+                        if(R>255)
+                            R=255;
+                        if(G<0)
+                            G=0;
+
+                            B = 0;
+
+                            // set pixel color to output bitmap
+                            bmOut.setPixel(x, y, Color.argb(A, R, G, B));
+                    }
+                }
+
+                //save to SDcard
+                FileOutputStream out=null;
+                try {
+                    out = context.openFileOutput(bodyGraphName[i] + ".png", 0);
+                    bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    out.flush();
+                    Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally
+                {
+                        try {
+                            if(out!=null)
+                                out.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                }
+            }
+        }
+
+        public void applyBMP()
+        {
+            Variables v = (Variables) getApplication();
+
+            for(int i=0 ; i < bodygraphDrawable.length ; ++i) {
+                ImageView imgview;
+
+                try{
+                    imgview = (ImageView)findViewById(bodygraphId[i]);
+                    String imgpath = v.path + bodyGraphName[i] + ".png";
+                    Bitmap bm = BitmapFactory.decodeFile(imgpath);
+                    imgview.setImageBitmap(bm);
+                }catch(Exception e){Toast.makeText(getApplicationContext(), "Load error", Toast.LENGTH_LONG).show();}
+
+            }
+
+        }
+    */
+    public void applyPNG() {      // 데이터를 저장하고 바디그래프에 반영한다
+
         for(int i=0 ; i < bodygraphDrawable.length ; ++i) {
             ImageView imgview = (ImageView)findViewById(bodygraphId[i]);
 
@@ -189,16 +276,9 @@ public abstract class BodygraphActivity extends Activity {
                 imgview.setImageResource(bodygraphDrawable3[i]);
         }
     }
-
     public void calculateDamage(ArrayList<String> a){
-        //체크박스 클릭할 때 - 오늘 선택한 운동 전체에 대해 수행
-        //readPreviousDamage - 저장된 운동의 목록에 대해 수행
-        //운동 이름의 ArrayList를 인자로 필요함
-
+//ArrayList<String> a = v.getArrayList();를 넣어줘야함
         int result = 0;
-
-        //초기화
-        damage = (int[])v.getSavedPreviousDamage().clone();
 
         for(String str : a) {
                 Exercise ex = v.getExManager().searchName(str);
@@ -229,23 +309,19 @@ public abstract class BodygraphActivity extends Activity {
                 // 횟수
                     //없음
 
-                //계산된 피로를 부위마다 적용
-                ArrayList<String> tmplist = ex.getPart();
-
-                for(String p : tmplist) {
-                    damage[mapName(p)] += (result - 15) * 510 / 105;
-                }
+                damage[mapName(str)] += (result-15)*510/105;
             }
     }
 
     public void readPreviousDamage()
     {
         ExerciseList exerciseList;
+        v = (Variables)getApplication();
         Calendar date = Calendar.getInstance();
 
         for(int i = 0;i<7;++i)
         {
-            date.add(Calendar.DATE, -1); //-1 일 전 날짜부터, 총 -7일까지 계산
+            date.add(Calendar.DATE, -1); //-1 일 전 날짜, 총 -7일까지 계산
 
             //해당 파일 열기
             String openFileName = String.format("%04d%02d%02d   .bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
@@ -263,8 +339,6 @@ public abstract class BodygraphActivity extends Activity {
                     for(int j=0;j<e.getPart().size();++j)
                         calculateDamage(e.getPart());
                 }
-                //계산된 피로도를 임시로 저장
-                v.setsavedPreviousDamage(damage);
 
                 fis.close();
             } catch (FileNotFoundException e) {
@@ -278,7 +352,6 @@ public abstract class BodygraphActivity extends Activity {
 
     }
 
-    //근육 번호와 이름을 대응시키는 함수
     public int mapName(String str)
     {
         if(str.equals("chest1"))
@@ -355,7 +428,7 @@ public abstract class BodygraphActivity extends Activity {
         {
             temppart = exlist.get(i).getPart();
             for(j=0;j<exlist.get(i).getPartNum();j++) {
-                if (temppart.get(j).equals(part)) {
+                if (temppart.get(i).equals(part)) {
                     templist.add(exlist.get(i));
                     count++;
                     break;
@@ -379,37 +452,15 @@ public abstract class BodygraphActivity extends Activity {
 
             String line;
             String nameExercise =""; //
+            ArrayList<String> partExercise = new ArrayList<String>(); //
             String simpleExercise ="";//
             int seqnum = 0;
+            ArrayList<String> seqExercise = new ArrayList<String>(); //
             String tipExercise =""; //
             String kcalExercise =""; //
             String tiredExercise =""; //
             while ((line = br.readLine()) != null) {
                 switch(linenum) {
-                    case 0: nameExercise = line;
-                        break;
-                    case 1:
-                        partnum = Integer.parseInt(line); // atoi
-                        for(i=0;i<partnum;i++)
-                        {
-                            line = br.readLine();
-                            part.add(line);
-                        }
-                        break;
-                    case 2: simpleExercise = line;
-                        break;
-                    case 3:
-                        seqnum = Integer.parseInt(line);
-                        for(i=0;i<seqnum;i++)
-                        {
-                            line = br.readLine();
-                            seq.add(line);
-                        }
-                        break;
-                    case 4: tipExercise = line;
-                        break;
-                    case 5: kcalExercise = line;
-                        break;
                     case 6: tiredExercise = line;
                         break;
                     default:
@@ -418,11 +469,9 @@ public abstract class BodygraphActivity extends Activity {
                 linenum++;
                 if(linenum == 7) {
                     linenum = 0;
-                    ex = new Exercise(nameExercise, partnum, part, simpleExercise, seqnum, seq,
+                    ex = new Exercise(nameExercise, partnum, partExercise, simpleExercise, seqnum, seqExercise,
                             tipExercise, kcalExercise, tiredExercise);
                     exlist.add(ex);
-                    part = new ArrayList<String>();
-                    seq = new ArrayList<String>();
                 }
             }
 
@@ -433,6 +482,9 @@ public abstract class BodygraphActivity extends Activity {
         }
     }
     public void setMuscleExercise() {
+        Variables v = (Variables) getApplication();
+        ArrayList<MuscleExercise> melist = new ArrayList<MuscleExercise>();
+        Exercise ex;
 
         loadingExercise(v.getExManager());
         loadingMuscleExercise(v.getMeManager(), v.getExManager());
@@ -440,7 +492,6 @@ public abstract class BodygraphActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
     }
 
@@ -458,105 +509,6 @@ public abstract class BodygraphActivity extends Activity {
         if(Environment.MEDIA_MOUNTED.equals(state)||Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))
             return true;
         return false;
-    }
-    */
-    /*
-    //bmp방식으로 적용하는법
-    public void createBMP(Context context)    //바디그래프 근육 색깔 계산 -> 색깔 바꾼 png파일 생성
-    {
-
-        Variables v = (Variables) getApplication();
-
-        ImageView img;
-        Bitmap bmIn;
-        for (int i = 0; i < bodygraphDrawable.length; ++i) {
-
-            bmIn = BitmapFactory.decodeResource(getResources(), bodygraphDrawable[i]);
-
-            // get image size
-            int width = bmIn.getWidth();
-            int height = bmIn.getHeight();
-            // create output bitmap
-            Bitmap bmOut = Bitmap.createBitmap(width, height, bmIn.getConfig());
-            // color information
-            int A, R, G, B;
-            int pixel;
-
-            // scan through all pixels
-            // calculate and change color
-            for (int x = 0; x < width; ++x) {
-                for (int y = 0; y < height; ++y) {
-
-                    // get pixel color
-                    pixel = bmIn.getPixel(x, y);
-                    A = Color.alpha(pixel);
-                    R = Color.red(pixel);
-                    G = Color.green(pixel);
-                    B = Color.blue(pixel);
-
-                    if(R<=4 && G<=4 && B<=4)
-                        continue;
-
-                    // round-off color offset
-                    if(damage[i]<255) {
-                        R = damage[i];
-                        G = 255;
-                    }
-                    else{
-                        R=255;
-                        G=510-damage[i];
-                    }
-                    if(R>255)
-                        R=255;
-                    if(G<0)
-                        G=0;
-
-                        B = 0;
-
-                        // set pixel color to output bitmap
-                        bmOut.setPixel(x, y, Color.argb(A, R, G, B));
-                }
-            }
-
-            //save to SDcard
-            FileOutputStream out=null;
-            try {
-                out = context.openFileOutput(bodyGraphName[i] + ".png", 0);
-                bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
-                out.flush();
-                Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally
-            {
-                    try {
-                        if(out!=null)
-                            out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-            }
-        }
-    }
-
-    public void applyBMP()
-    {
-        Variables v = (Variables) getApplication();
-
-        for(int i=0 ; i < bodygraphDrawable.length ; ++i) {
-            ImageView imgview;
-
-            try{
-                imgview = (ImageView)findViewById(bodygraphId[i]);
-                String imgpath = v.path + bodyGraphName[i] + ".png";
-                Bitmap bm = BitmapFactory.decodeFile(imgpath);
-                imgview.setImageBitmap(bm);
-            }catch(Exception e){
-                Toast.makeText(getApplicationContext(), "Load error", Toast.LENGTH_LONG).show();}
-
-        }
-
     }
     */
 }

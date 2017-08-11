@@ -10,18 +10,14 @@ import java.util.ArrayList;
 
 public class Exercise implements Serializable {
     public Exercise(){};
-    public Exercise(String n)
-    {
-        name = n;
-    }
     public Exercise(String n, int np, ArrayList<String> p, String s, int sp,ArrayList<String> se, String t, String k, String ti)
     {
         name = n;
         partNum = np;
-        part = (ArrayList<String>) p.clone();
+        part = p;
         simple = s;
         seqNum = sp;
-        seq = (ArrayList<String>) se.clone();
+        seq = se;
         tip = t;
         kcal = k;
         tired = ti;

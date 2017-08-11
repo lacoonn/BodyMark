@@ -12,12 +12,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.content.Intent;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CalendarPopup extends Activity {
@@ -109,12 +113,12 @@ public class CalendarPopup extends Activity {
 
                 // todayExerciseList의 인자들을 arrayList에 복사한다 -------------------------------
                 ArrayList<Exercise> tempExerciseList = v.todayExerciseList.getExerciseArray();
-                v.getSelectedExerciseList().clear();
+                v.getArrayList().clear();
                 for(Exercise i : tempExerciseList) {
-                    v.SelectExercise(i.getName());
+                    v.addArrayList(i.getName());
                 }
                 // updateListView를 호출한다 -------------------------------------------------------
-                v.updateMainListView();
+                v.updateListView();
 
                 // 액티비티 종료 -------------------------------------------------------------------
                 finish();
