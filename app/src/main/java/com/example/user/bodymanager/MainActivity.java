@@ -26,12 +26,14 @@ public class MainActivity extends BodygraphActivity {
         v = (Variables) getApplication();
 
         v.todayListView = (ListView) findViewById(R.id.main_todaylistview);
-        v.todayadapter = new TodayListViewAdapter();
-        v.todayListView.setAdapter(v.todayadapter);
+        v.todayAdapter = new TodayListViewAdapter();
+        v.todayListView.setAdapter(v.todayAdapter);
 
+    //read user's info
         readInfo();
 //=========================================|
 
+        loadTodayExercise();
         setMuscleExercise();
         readPreviousDamage();
         applyPNG();
@@ -66,12 +68,24 @@ public class MainActivity extends BodygraphActivity {
                 startActivity(intent1);
                 break;
             case R.id.main_btnCalendar:
+<<<<<<< HEAD
                 startActivity(intent2);
                 break;
             case R.id.main_btnCustom:
                 startActivity(intent3);
                 break;
             case R.id.main_btnSettings:
+=======
+
+                startActivity(intent2);
+                break;
+            case R.id.main_btnCustom:
+
+                startActivity(intent3);
+                break;
+            case R.id.main_btnSettings:
+
+>>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
                 startActivity(intent4);
                 break;
             case R.id.main_btnReverse:
@@ -91,8 +105,6 @@ public class MainActivity extends BodygraphActivity {
     protected void onResume() {
         super.onResume();
         applyPNG();
-        v.updateListView();
-        //v.updateTodayExerciseList();
     }
 
 
@@ -105,6 +117,7 @@ public class MainActivity extends BodygraphActivity {
 
     }
 
+    //앱이 처음 시작할 때 저장된 오늘의 운동을 읽어오는 함수
     public void loadTodayExercise()
     {
         ExerciseList exerciseList;
@@ -124,7 +137,7 @@ public class MainActivity extends BodygraphActivity {
 
             for(Exercise e : exerciseList.getExerciseArray())
             {
-                v.addArrayList(e.getName());
+                v.SelectExercise(e.getName());
             }
 
             fis.close();

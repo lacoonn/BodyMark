@@ -10,18 +10,29 @@ import java.util.ArrayList;
 
 public class Exercise implements Serializable {
     public Exercise(){};
+<<<<<<< HEAD
     public Exercise(String n)
     {
         name = n;
     }
+=======
+    public Exercise(String s) { name = s; }
+>>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
     public Exercise(String n, int np, ArrayList<String> p, String s, int sp,ArrayList<String> se, String t, String k, String ti)
     {
         name = n;
         partNum = np;
+<<<<<<< HEAD
         part = (ArrayList<String>) p.clone();
         simple = s;
         seqNum = sp;
         seq = (ArrayList<String>) se.clone();
+=======
+        part = (ArrayList<String>)p.clone(); // deep copy
+        simple = s;
+        seqNum = sp;
+        seq = (ArrayList<String>)se.clone();; // deep copy
+>>>>>>> 9813e8dcdfb332f715fed686dac3c3d28a79e7e8
         tip = t;
         kcal = k;
         tired = ti;
