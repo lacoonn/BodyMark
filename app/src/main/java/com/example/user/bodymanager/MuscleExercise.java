@@ -9,31 +9,37 @@ import java.util.ArrayList;
 public class MuscleExercise {
     public MuscleExercise() {
     }
-    public MuscleExercise(String n)
+    public MuscleExercise(String m)
     {
-        this.name = n;
+        this.muscle = m;
     }
-    public MuscleExercise(String n, ArrayList<Exercise> e, int m)
+    public MuscleExercise(String m, String p, ArrayList<Exercise> e, int max)
     {
-        this.name = n;
+        this.muscle = m;
+        this.part = p;
         this.exer = e;
-        this.Maxexer = m;
+        this.Maxexer = max;
     }
     private ArrayList<Exercise> exer; //
-    private String name; //
+    private String muscle; //
+    private String part;
     private int Maxexer; //
+
+
+
+    //getter setter
 
     public ArrayList<Exercise> getExer() {
         return exer;
     }
-    public String getName() {
-        return name;
+    public String getMuscle() {
+        return muscle;
     }
     public int getMaxexer() {
         return Maxexer;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setMuscle(String muscle) {
+        this.muscle = muscle;
     }
     public void setExer(ArrayList<Exercise> exer) {
         this.exer = exer;
@@ -41,5 +47,10 @@ public class MuscleExercise {
     public void setMaxexer(int maxexer) {
         Maxexer = maxexer;
     }
-
+    public String getPart() {
+        return part;
+    }
+    public void setPart(String part) {
+        this.part = part;
+    }
 }

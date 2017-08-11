@@ -18,6 +18,14 @@
             android:layout_width="250dp"
             android:layout_height="350dp">
 
+            <Button
+                android:id="@+id/main_btnReverse"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/reverse"
+                android:onClick="onClick" />
+
             <ImageView
                 android:id="@+id/main_bodygraph_body1"
                 android:layout_width="350dp"
@@ -195,6 +203,15 @@
                 android:layout_height="350dp"
                 android:visibility="invisible" />
 
+            <ImageView
+                android:id="@+id/main_bodygraph_clave"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/calves2_green"
+                android:visibility="invisible" />
+
         </RelativeLayout>
 
         <LinearLayout
@@ -226,7 +243,7 @@
 
 
     <LinearLayout
-        android:id="@+id/main_todayLayout"
+        android:id="@+id/exercise_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -241,105 +258,12 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <ScrollView
-            android:id="@+id/main_todayScroll"
+        <ListView
+            android:id="@+id/exercise_listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#eeeeee">
 
-            <LinearLayout
-                android:id="@+id/main_todayScrollLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="2dp"
-                    android:background="#ffff00"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text="벤치 프레스 - 머신"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <Button
-                        android:id="@+id/button1"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="2dp"
-                    android:background="#ffff00"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="2dp"
-                    android:background="#ffff00"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/checkBox3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=" 운동명"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
-
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:background="@drawable/zoom"
-                        android:onClick="onClick" />
-                </RelativeLayout>
-
-            </LinearLayout>
-        </ScrollView>
+        </ListView>
     </LinearLayout>
 </LinearLayout>
