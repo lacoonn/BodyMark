@@ -12,6 +12,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static com.example.user.bodymanager.BodygraphActivity.bodygraphDrawable;
+
 
 /**
  * Created by jum on 2017-06-16.
@@ -29,15 +31,18 @@ public class Variables extends Application {
     public ExerciseList todayExerciseList = new ExerciseList(year, month, day);
     private static ExerciseManager exManager = ExerciseManager.getInstance();
     private static MuscleExerciseManager meManager = MuscleExerciseManager.getInstance();
-    private static ArrayList<String> arrayList = new ArrayList<String>(); // 장바구니
-    int visibility;
+    private static ArrayList<String> SelectedExerciseList = new ArrayList<String>(); // 장바구니
+
     ListView todayListView;
-    TodayListViewAdapter todayadapter;
+    TodayListViewAdapter todayAdapter;
+    ExerciseListViewAdapter exerciseAdapter;
 
     static public int gender;
     static public int age;
     static public int weight;
     static public int height;
+
+    private int[] savedPreviousDamage = new int[bodygraphDrawable.length];
     //-------------------------function declaration---------------------
 
     public  ExerciseManager getExManager() {
@@ -48,21 +53,21 @@ public class Variables extends Application {
         return meManager;
     }
 
-    public ArrayList<String> getArrayList() {
-        return arrayList;
+    public ArrayList<String> getSelectedExerciseList() {
+        return SelectedExerciseList;
     }
 
-    public void addArrayList(String n){
-        arrayList.add(n);
+    public void SelectExercise(String n){
+        SelectedExerciseList.add(n);
         Toast.makeText(this, n, Toast.LENGTH_SHORT).show();
     }
     public void removeArrayList(String n){
-        arrayList.remove(n);
+        SelectedExerciseList.remove(n);
     }
 
     public void updateTodayExerciseList() {
         todayExerciseList.clearExerciseList();
-        for(String i : arrayList) {
+        for(String i : SelectedExerciseList) {
             //todayExerciseList.addExercise(exManager.searchName(i));
             todayExerciseList.addExercise(new Exercise(i));
         }
@@ -94,17 +99,30 @@ public class Variables extends Application {
 
     }
 
-    public void updateListView() {
-        // 메인 ListView에 arrayList의 데이터를 추가합니다------------------------------------------
-        ArrayList<String> temp = getArrayList();
-        todayadapter.clearItem();
+    //MainActivity의 '오늘의 운동' 세팅
+    public void updateMainListView() {
+        // 메인 ListView에 selectedExerciseList의 데이터를 추가합니다
+        ArrayList<String> temp = getSelectedExerciseList();
+        todayAdapter.clearItem();
         for(String i : temp) {
-            todayadapter.addItem(i);
+            todayAdapter.addItem(i);
         }
-        todayadapter.notifyDataSetChanged();
+
+        todayAdapter.notifyDataSetChanged();
 
         // 메인 ListView를 업데이트 할 때 todayExerciseList를 업데이트하고 파일로 저장합니다.
         updateTodayExerciseList();
         saveTodayExerciseListToFile();
+    }
+
+    //------------------------- getter & setter ---------------------
+
+    public int[] getSavedPreviousDamage() {
+        return savedPreviousDamage;
+    }
+
+    public void setsavedPreviousDamage(int[] damage) {
+        //deep copy
+        this.savedPreviousDamage = (int[]) damage.clone();
     }
 }

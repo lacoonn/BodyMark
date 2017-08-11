@@ -51,11 +51,11 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         cb2.setOnCheckedChangeListener(this);
         cb3.setOnCheckedChangeListener(this);
 
-        adapter = new ArrayAdapter<String>(ExerciseActivity.this, R.layout.my_text_view, v.getArrayList());
+        adapter = new ArrayAdapter<String>(ExerciseActivity.this, R.layout.my_text_view, v.getSelectedExerciseList());
         listView.setAdapter(adapter);
         textView.setText(name);
 
-        ArrayList<String> tempArray = v.getArrayList();
+        ArrayList<String> tempArray = v.getSelectedExerciseList();
 
         if(name.equals("몸 운동")){
             String str1 = "벤치 프레스 - 머신";
@@ -130,7 +130,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
 
         if (buttonView.getId() == cb1.getId()) {
             if(cb1.isChecked()) {
-                v.addArrayList(cb1.getText().toString());
+                v.SelectExercise(cb1.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -140,7 +140,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         }
         if (buttonView.getId() == cb2.getId()) {
             if(cb2.isChecked()) {
-                v.addArrayList(cb2.getText().toString());
+                v.SelectExercise(cb2.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -150,7 +150,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         }
         if (buttonView.getId() == cb3.getId()) {
             if(cb3.isChecked()) {
-                v.addArrayList(cb3.getText().toString());
+                v.SelectExercise(cb3.getText().toString());
                 adapter.notifyDataSetChanged();
             }
             else {
@@ -159,14 +159,15 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             }
         }
 
-        calculateDamage(v.getArrayList());
+        calculateDamage(v.getSelectedExerciseList());
         applyPNG();
     }
 
     @Override
     protected void onDestroy() {
         v.updateTodayExerciseList();
-        v.updateListView();
+        v.updateMainListView();
+        v.saveTodayExerciseListToFile();
         super.onDestroy();
     }
 
@@ -190,4 +191,16 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 break;
         }
     }
+
+
+    //ExerciseActivity의 운동 선택창 세팅
+    public void updateExerciseListView(ArrayList<String> exerciseName) {
+        // ExerciseListView에  데이터를 추가합니다------------------------------------------
+        v.exerciseAdapter.clearItem();
+        for(String i : exerciseName) {
+            v.exerciseAdapter.addItem(i);
+        }
+        v.exerciseAdapter.notifyDataSetChanged();
+    }   //oncreate의 운동.txt 읽어오는 구간에 ArrayList<String>을 추가하여 모든 운동을 다 읽으면 인자(exerciseName)로 준다.
+
 }
