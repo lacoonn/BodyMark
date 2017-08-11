@@ -428,7 +428,7 @@ public abstract class BodygraphActivity extends Activity {
         {
             temppart = exlist.get(i).getPart();
             for(j=0;j<exlist.get(i).getPartNum();j++) {
-                if (temppart.get(j).equals(part)) {
+                if (temppart.get(i).equals(part)) {
                     templist.add(exlist.get(i));
                     count++;
                     break;
@@ -452,37 +452,15 @@ public abstract class BodygraphActivity extends Activity {
 
             String line;
             String nameExercise =""; //
+            ArrayList<String> partExercise = new ArrayList<String>(); //
             String simpleExercise ="";//
             int seqnum = 0;
+            ArrayList<String> seqExercise = new ArrayList<String>(); //
             String tipExercise =""; //
             String kcalExercise =""; //
             String tiredExercise =""; //
             while ((line = br.readLine()) != null) {
                 switch(linenum) {
-                    case 0: nameExercise = line;
-                        break;
-                    case 1:
-                        partnum = Integer.parseInt(line); // atoi
-                        for(i=0;i<partnum;i++)
-                        {
-                            line = br.readLine();
-                            part.add(line);
-                        }
-                        break;
-                    case 2: simpleExercise = line;
-                        break;
-                    case 3:
-                        seqnum = Integer.parseInt(line);
-                        for(i=0;i<seqnum;i++)
-                        {
-                            line = br.readLine();
-                            seq.add(line);
-                        }
-                        break;
-                    case 4: tipExercise = line;
-                        break;
-                    case 5: kcalExercise = line;
-                        break;
                     case 6: tiredExercise = line;
                         break;
                     default:
@@ -491,11 +469,9 @@ public abstract class BodygraphActivity extends Activity {
                 linenum++;
                 if(linenum == 7) {
                     linenum = 0;
-                    ex = new Exercise(nameExercise, partnum, part, simpleExercise, seqnum, seq,
+                    ex = new Exercise(nameExercise, partnum, partExercise, simpleExercise, seqnum, seqExercise,
                             tipExercise, kcalExercise, tiredExercise);
                     exlist.add(ex);
-                    part = new ArrayList<String>();
-                    seq = new ArrayList<String>();
                 }
             }
 
