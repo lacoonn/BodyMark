@@ -2,6 +2,7 @@ package com.example.user.bodymanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -84,6 +85,19 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             }
             v.updateExerciseListView(tmpStrList);
         }
+
+
+        // checkbox changed action
+        v.exerciseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                // get item
+                ExerciseListViewItem item = (ExerciseListViewItem) parent.getItemAtPosition(position);
+
+                String cbTitle = item.getTitle();
+                Log.d("checked_item", "el1: " + cbTitle);
+            }
+        });
 
 
         /*
