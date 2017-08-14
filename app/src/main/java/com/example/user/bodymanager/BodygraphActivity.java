@@ -343,6 +343,7 @@ public abstract class BodygraphActivity extends Activity {
         meManager.add(addingMuscleExercise("leg3", "leg", exlist));
         meManager.add(addingMuscleExercise("leg4", "leg", exlist));
         meManager.add(addingMuscleExercise("leg5", "leg", exlist));
+
     }
     //==================================================================================================================================================
     protected static MuscleExercise addingMuscleExercise(String muscle, String part, ArrayList<Exercise> exlist)

@@ -1,13 +1,17 @@
 package com.example.user.bodymanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,9 +21,9 @@ import java.util.ArrayList;
  * Created by User on 2017-05-25.
  */
 
-public class ExerciseActivity extends BodygraphActivity implements CompoundButton.OnCheckedChangeListener {
+public class ExerciseActivity extends BodygraphActivity {
 
-    private boolean flag = false;
+    boolean flag = false;
     Variables v;
 
     ArrayAdapter<String> adapter;
@@ -65,7 +69,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             for (Exercise ex : exlist) {
                 tmpStrList.add(ex.getName());
             }
-            v.updateExerciseListView(tmpStrList);
+            v.updateExerciseListView(tmpStrList, "body");
             tmpStrList.clear();
         }
         else if(name.equals("arm")) {
@@ -74,7 +78,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             for (Exercise ex : exlist) {
                 tmpStrList.add(ex.getName());
             }
-            v.updateExerciseListView(tmpStrList);
+            v.updateExerciseListView(tmpStrList, "arm");
             tmpStrList.clear();
         }
         else if(name.equals("leg")) {
@@ -83,7 +87,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             for (Exercise ex : exlist) {
                 tmpStrList.add(ex.getName());
             }
-            v.updateExerciseListView(tmpStrList);
+            v.updateExerciseListView(tmpStrList, "leg");
         }
 
 
@@ -99,66 +103,7 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
             }
         });
 
-
-        /*
-        //checkbox click handler
-        v.exerciseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                // get item
-                 item = (ListViewItem) parent.getItemAtPosition(position) ;
-
-                String titleStr = item.getTitle() ;
-                String descStr = item.getDesc() ;
-                Drawable iconDrawable = item.getIcon() ;
-            }
-        }) ;
-
-
-        */
-
     } // end onCreate()
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        // 체크박스를 클릭해서 상태가 바꾸었을 경우 호출되는 콜백 메서드
-        /*
-        if ( !flag ) return;
-
-        if (buttonView.getId() == cb1.getId()) {
-            if(cb1.isChecked()) {
-                v.SelectExercise(cb1.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-            else {
-                v.removeArrayList(cb1.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-        }
-        if (buttonView.getId() == cb2.getId()) {
-            if(cb2.isChecked()) {
-                v.SelectExercise(cb2.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-            else {
-                v.removeArrayList(cb2.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-        }
-        if (buttonView.getId() == cb3.getId()) {
-            if(cb3.isChecked()) {
-                v.SelectExercise(cb3.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-            else {
-                v.removeArrayList(cb3.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-        }*/
-
-        calculateDamage(v.getSelectedExerciseList());
-        applyPNG();
-    }
 
     public void onClick(View view) {
         Intent intent = new Intent(ExerciseActivity.this, ExplainActivity.class);
@@ -167,20 +112,6 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
                 changeVisibility();
                 break;
         }
-        /*
-            case R.id.button1:
-                intent.putExtra("exer",cb1.getText().toString());
-                startActivity(intent);
-                break;
-            case R.id.button2:
-                intent.putExtra("exer",cb2.getText().toString());
-                startActivity(intent);
-                break;
-            case R.id.button3:
-                intent.putExtra("exer",cb3.getText().toString());
-                startActivity(intent);
-                break;
-        */
     }
 
 
@@ -192,7 +123,129 @@ public class ExerciseActivity extends BodygraphActivity implements CompoundButto
         super.onDestroy();
     }
 
+    ///////////////////////////// Adapter
+    class ExerciseListViewAdapter extends BaseAdapter {
 
+        boolean[] checkBoxState;
 
+        private class ViewHolder{
+            CheckBox cb;
+            Button btn;
+        }
 
+        private ArrayList<ExerciseListViewItem> exerciselistViewItemList = new ArrayList<ExerciseListViewItem>() ;
+
+        // ListViewAdapter의 생성자
+        public ExerciseListViewAdapter() {}
+        public ExerciseListViewAdapter(ArrayList<ExerciseListViewItem> items)
+        {
+            this.exerciselistViewItemList = items;
+
+            checkBoxState = new boolean[getCount()];
+        }
+
+        // Adapter에 사용되는 데이터의 개수를 리턴. : 필수 구현
+        @Override
+        public int getCount() {
+            return exerciselistViewItemList.size();
+        }
+
+        // 지정한 위치(position)에 있는 데이터 리턴 : 필수 구현
+        @Override
+        public Object getItem(int position) {
+            return exerciselistViewItemList.get(position) ;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
+        public void addItem(String title) {
+            ExerciseListViewItem item = new ExerciseListViewItem();
+
+            item.setTitle(title);
+
+            exerciselistViewItemList.add(item);
+        }
+
+        public void clearItem() {
+            exerciselistViewItemList.clear();
+        }
+
+        // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder = null;
+
+            final Context context = parent.getContext();
+
+            // "listview_item" Layout을 inflate하여 convertView 참조 획득.
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.exercise_listview_item, parent, false);
+
+                viewHolder = new ViewHolder();
+                viewHolder.cb = (CheckBox) convertView.findViewById(R.id.exerciseitem_checkbox);
+                viewHolder.btn = (Button) convertView.findViewById(R.id.button);
+
+                convertView.setTag(viewHolder);
+            }
+            else{
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+
+            // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
+            final ViewHolder finalViewHolder = viewHolder;
+
+            viewHolder.cb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if ( !flag ) return;
+
+                    if(checkBoxState[position] == true) {
+                        checkBoxState[position] = false;
+                        v.removeArrayList(finalViewHolder.cb.getText().toString());
+                        adapter.notifyDataSetChanged();
+                    }
+                    else {
+                        checkBoxState[position] = true;
+                        v.SelectExercise(finalViewHolder.cb.getText().toString());
+                        adapter.notifyDataSetChanged();
+                    }
+                    calculateDamage(v.getSelectedExerciseList());
+                    applyPNG();
+                }
+            });
+
+            viewHolder.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("list_button", "clicked");
+                    Intent intent = new Intent(v.getContext(), ExplainActivity.class);
+                    intent.putExtra("exer",finalViewHolder.cb.getText().toString());
+                    context.startActivity(intent);
+                }
+            });
+
+            // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
+            ExerciseListViewItem exerciselistViewItem = exerciselistViewItemList.get(position);
+
+            // 아이템 내 각 위젯에 데이터 반영
+            viewHolder.cb.setText(exerciselistViewItem.getTitle());
+
+            //체크박스 스크롤시 엉뚱한 곳 체크 되어있는것 막는 코드
+            if(checkBoxState[position] == true){
+                viewHolder.cb.setChecked(true);
+            }
+            else {
+                viewHolder.cb.setChecked(false);
+            }
+
+            return convertView;
+        }
+
+    }
 }
