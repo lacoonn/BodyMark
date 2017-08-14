@@ -2,10 +2,12 @@ package com.example.user.bodymanager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -49,9 +51,30 @@ public class ExerciseListViewAdapter extends BaseAdapter{
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         final CheckBox cb = (CheckBox) convertView.findViewById(R.id.exerciseitem_checkbox);
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            }
+        });
+
+        // button part
+        Button buttonView = (Button) convertView.findViewById(R.id.button);
+
+        buttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("list_button", "clicked");
+                Intent intent = new Intent(v.getContext(), ExplainActivity.class);
+                intent.putExtra("exer",cb.getText().toString());
+                context.startActivity(intent);
+            }
+        });
+
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ExerciseListViewItem exerciselistViewItem = exerciselistViewItemList.get(position);
+
 
         // 아이템 내 각 위젯에 데이터 반영
         cb.setText(exerciselistViewItem.getTitle());
