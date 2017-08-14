@@ -262,7 +262,8 @@
             android:id="@+id/exercise_listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#eeeeee">
+            android:background="#eeeeee"
+            android:choiceMode="multipleChoice">
 
         </ListView>
     </LinearLayout>

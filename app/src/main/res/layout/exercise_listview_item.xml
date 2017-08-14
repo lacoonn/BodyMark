@@ -24,7 +24,9 @@ android:orientation="horizontal">
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
 
         <Button

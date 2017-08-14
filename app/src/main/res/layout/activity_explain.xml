@@ -39,17 +39,6 @@
         android:layout_margin="5dp">
 
         <Button
-            android:id="@+id/button_explain1"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:layout_weight="0.5"
-            android:background="#a7a7a7"
-            android:onClick="onClick"
-            android:text="설정" />
-
-        <Button
             android:id="@+id/button_explain3"
             android:layout_width="100dp"
             android:layout_height="50dp"
