@@ -39,6 +39,9 @@ public class MainActivity extends BodygraphActivity {
         readPreviousDamage();
         applyPNG();
 
+        v.checkBoxBody = new boolean[v.getMeManager().searchPart("body").size()];
+        v.checkBoxArms = new boolean[v.getMeManager().searchPart("arm").size()];
+        v.checkBoxLegs = new boolean[v.getMeManager().searchPart("leg").size()];
     }
 
     public void onClick(View view) {

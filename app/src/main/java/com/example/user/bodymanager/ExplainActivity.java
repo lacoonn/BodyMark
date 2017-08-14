@@ -71,13 +71,8 @@ public class ExplainActivity extends Activity {
     }
 
     public void onClick(View view) {
-        Intent intent1 = new Intent(ExplainActivity.this, WebActivity.class); // 설정창 만들어야함
         Intent intent2 = new Intent(ExplainActivity.this, WebActivity.class);
         switch (view.getId()) {
-            case R.id.button_explain1:
-                intent1.putExtra("exer",ex.getName());
-                startActivity(intent1);
-                break;
             case R.id.button_explain3:
                 intent2.putExtra("exer",ex.getName());
                 startActivity(intent2);
