@@ -3,7 +3,6 @@ package com.example.user.bodymanager;
 import android.app.Application;
 import android.content.Context;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -65,7 +64,6 @@ public class Variables extends Application {
 
     public void SelectExercise(String n){
         SelectedExerciseList.add(n);
-        Toast.makeText(this, n, Toast.LENGTH_SHORT).show();
     }
     public void removeArrayList(String n){
         SelectedExerciseList.remove(n);

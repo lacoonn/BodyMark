@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.io.BufferedReader;
@@ -57,25 +56,19 @@ public class SettingsActivity extends BodygraphActivity {
         }
         if(in != null)
         {
-            Toast.makeText(this, "File Opened", Toast.LENGTH_LONG).show();
             try {
                 str = in.readLine();
                 if(str.equals("0")) {
-                    //Toast.makeText(this, "남자" + str, Toast.LENGTH_LONG).show();
                     maleButton.setChecked(true);
                 }
                 else {
-                    //Toast.makeText(this, "여자" + str, Toast.LENGTH_LONG).show();
                     femaleButton.setChecked(true);
                 }
                 str = in.readLine();
-                //Toast.makeText(this, "키:"+str, Toast.LENGTH_LONG).show();
                 height.setText(str);
                 str = in.readLine();
-                //Toast.makeText(this, "몸무게:"+str, Toast.LENGTH_LONG).show();
                 weight.setText(str);
                 str = in.readLine();
-                //Toast.makeText(this, "나이:"+str, Toast.LENGTH_LONG).show();
                 age.setText(str);
 
             } catch (IOException e) {
@@ -104,7 +97,6 @@ public class SettingsActivity extends BodygraphActivity {
             fosMemo = mContext.openFileOutput(FILE_NAME, 0);
             fosMemo.write(strData.getBytes());
             fosMemo.close();
-            //Toast.makeText(this, mContext.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
             readInfo();
         } catch (Exception e) {
             e.printStackTrace();

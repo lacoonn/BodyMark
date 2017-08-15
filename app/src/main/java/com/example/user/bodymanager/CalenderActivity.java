@@ -95,7 +95,6 @@ public class CalenderActivity extends BodygraphActivity {
                 //CalendarPopup cp = new CalendarPopup(year, month, dayOfMonth);
                 //startActivity(new Intent(CalenderActivity.this, cp.getClass()));
                 Intent intent = new Intent(CalenderActivity.this, CalendarPopup.class);
-                //Toast.makeText(CalenderActivity.this, year+"/"+(month+1)+"/"+dayOfMonth, Toast.LENGTH_SHORT).show();
                 intent.putExtra("year", year);
                 intent.putExtra("month", month);
                 intent.putExtra("day", dayOfMonth);

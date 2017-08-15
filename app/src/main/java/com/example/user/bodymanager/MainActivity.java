@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -125,13 +124,11 @@ public class MainActivity extends BodygraphActivity {
         String openFileName = String.format("%04d%02d%02d.bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
 
         try {
-            //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
             FileInputStream fis = new FileInputStream(Variables.path + openFileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
             exerciseList = (ExerciseList) ois.readObject();
-            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
 
+            v.getSelectedExerciseList().clear();
             for(Exercise e : exerciseList.getExerciseArray())
             {
                 v.SelectExercise(e.getName());

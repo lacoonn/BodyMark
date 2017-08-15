@@ -64,7 +64,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.trapezius2,
             R.drawable.tricep,
 
-            R.drawable.calves2_green
+            R.drawable.calves2
     };
     public static int bodygraphDrawable2[] = {
             R.drawable.bicep_y,
@@ -86,7 +86,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.trapezius2_y,
             R.drawable.tricep_y,
 
-            R.drawable.calves2_yellow
+            R.drawable.calves2
     };
     public static int bodygraphDrawable3[] = {
             R.drawable.bicep_r,
@@ -108,7 +108,7 @@ public abstract class BodygraphActivity extends Activity {
             R.drawable.trapezius2_r,
             R.drawable.tricep_r,
 
-            R.drawable.calves2_red
+            R.drawable.calves2
     };
     public static int bodygraphId[] = {
             R.id.main_bodygraph_bicep,
@@ -251,12 +251,9 @@ public abstract class BodygraphActivity extends Activity {
             String openFileName = String.format("%04d%02d%02d.bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
 
             try {
-                //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
                 FileInputStream fis = new FileInputStream(Variables.path + openFileName);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
                 exerciseList = (ExerciseList) ois.readObject();
-                //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
 
 
                 //임시로 arraylist 생성
@@ -537,7 +534,6 @@ public abstract class BodygraphActivity extends Activity {
                 out = context.openFileOutput(bodyGraphName[i] + ".png", 0);
                 bmOut.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
-                Toast.makeText(this, context.getFilesDir().toString(), Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -566,7 +562,6 @@ public abstract class BodygraphActivity extends Activity {
                 Bitmap bm = BitmapFactory.decodeFile(imgpath);
                 imgview.setImageBitmap(bm);
             }catch(Exception e){
-                Toast.makeText(getApplicationContext(), "Load error", Toast.LENGTH_LONG).show();}
 
         }
 

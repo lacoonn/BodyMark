@@ -252,7 +252,7 @@
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/calves2_green"
+                android:src="@drawable/calves2"
                 android:visibility="invisible" />
 
 

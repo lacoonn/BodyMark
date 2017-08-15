@@ -41,7 +41,6 @@ public class CalendarPopup extends Activity {
         year = intent.getIntExtra("year", 0);
         month = intent.getIntExtra("month", 0);
         day = intent.getIntExtra("day", 0);
-        //Toast.makeText(CalendarPopup.this, year+"/"+(month+1)+"/"+day, Toast.LENGTH_SHORT).show();
         TextView date = (TextView) findViewById(R.id.textView);
         date.setText(year+"/"+(month+1)+"/"+day);
 
@@ -51,12 +50,9 @@ public class CalendarPopup extends Activity {
         //String openFileName = "" + year + (month + 1) + day + ".bin";
         String openFileName = String.format("%4d%02d%02d.bin", year, month + 1, day);
         try {
-            //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
             FileInputStream fis = new FileInputStream(Variables.path + openFileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림 생성", Toast.LENGTH_SHORT).show();
             exerciseList = (ExerciseList) ois.readObject();
-            //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
 
             fis.close();
         } catch (FileNotFoundException e) {

@@ -209,14 +209,14 @@
                 android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/calves2_green"
+                android:src="@drawable/calves2"
                 android:visibility="invisible" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="140dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/activity_horizontal_margin">
