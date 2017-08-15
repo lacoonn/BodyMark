@@ -1,6 +1,7 @@
 package com.example.user.bodymanager;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -60,6 +61,13 @@ public class ListViewAdapter extends BaseAdapter {
 
         Image.setImageDrawable(listViewItem.getImage());
         Seq.setText(listViewItem.getText());
+        String tempColor = listViewItem.getColor();
+        if(tempColor.equals("blue")) {
+            Seq.setTextColor(Color.BLUE);
+        }
+        else if(tempColor.equals("black")) {
+            Seq.setTextColor(Color.BLACK);
+        }
 
         return convertView;
     }
@@ -83,6 +91,17 @@ public class ListViewAdapter extends BaseAdapter {
         item.setVis(v);
         item.setImage(icon);
         item.setText(title);
+
+        listViewItemList.add(item);
+    }
+
+    public void addItem(Drawable icon, boolean v, String title, String color) {
+        Explain item = new Explain();
+
+        item.setVis(v);
+        item.setImage(icon);
+        item.setText(title);
+        item.setColor(color);
 
         listViewItemList.add(item);
     }

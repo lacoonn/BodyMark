@@ -11,6 +11,7 @@ public class Explain {
     private Drawable image;
     private String text;
     private boolean vis;
+    private String color = "black";
 
     Explain(){};
     Explain(Drawable img, String t, boolean v)
@@ -18,6 +19,14 @@ public class Explain {
         image = img;
         text = t;
         vis = v;
+    }
+
+    Explain(Drawable img, String t, boolean v, String c)
+    {
+        image = img;
+        text = t;
+        vis = v;
+        color = c;
     }
 
     public void setVis(boolean vis) {
@@ -34,10 +43,17 @@ public class Explain {
     public void setText(String text) {
         this.text = text;
     }
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public Drawable getImage() {
         return image;
     }
     public String getText() {
         return text;
+    }
+    public String getColor() {
+        return this.color;
     }
 }

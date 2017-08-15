@@ -33,21 +33,21 @@
             android:background="@color/white" />
 
         <LinearLayout
+            android:id="@+id/button_explain3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="0.1"
             android:background="#aaa"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:onClick="onClick">
 
-            <Button
-                android:id="@+id/button_explain3"
+            <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/play"
-                android:onClick="onClick" />
+                android:background="@drawable/play"/>
 
             <TextView
                 android:layout_width="100dp"

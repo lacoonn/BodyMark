@@ -59,15 +59,15 @@ public class ExplainActivity extends Activity {
                 part = part + ", ";
         }
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 부위");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 부위", "blue");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, part);
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 개요");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 개요", "blue");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, ex.getSimple());
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 순서");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 순서", "blue");
         printPicture(name, part);
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "주의 사항");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "주의 사항", "blue");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, ex.getTip());
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "난이도");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "난이도", "blue");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, transTired(ex.getTired()));
 
     }
@@ -287,6 +287,8 @@ public class ExplainActivity extends Activity {
             return "승모근";
         else if(n.equals("back3"))
             return "능형근";
+        else if(n.equals("waist1"))
+            return "기립근";
         else if(n.equals("abdomen1"))
             return "복직근";
         else if(n.equals("abdomen2"))
