@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.CalendarView;
-import android.widget.Toast;
-import android.content.Intent;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by User on 2017-05-25.
@@ -27,33 +26,61 @@ public class CalenderActivity extends BodygraphActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendarview);
         context = this;
+        v = (Variables) getApplication();
 
-        // 테스트를 위해 파일을 생성한다
+        // for test file
         try {
-            Toast.makeText(this, "15, 16, 17일 파일을 저장합니다!!!", Toast.LENGTH_SHORT).show();
             FileOutputStream fos = context.openFileOutput("20170615.bin", 0);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             ExerciseList el1 = new ExerciseList(2017, 06, 15);
-            el1.addExercise(new Exercise("푸시업", 0, null, null, 0, null, null, null, null));
-            el1.addExercise(new Exercise("윗몸일으키기", 0, null, null, 0, null, null, null, null));
+            el1.addExercise(v.getExManager().lists().get(0));
+            el1.addExercise(v.getExManager().lists().get(1));
+            ArrayList<Exercise> tr = el1.getExerciseArray();
             oos.writeObject(el1);
             fos.close();
 
             fos = context.openFileOutput("20170616.bin", 0);
             oos = new ObjectOutputStream(fos);
             ExerciseList el2 = new ExerciseList(2017, 06, 16);
-            el2.addExercise(new Exercise("플랭크", 0, null, null, 0, null, null, null, null));
-            el2.addExercise(new Exercise("벤치", 0, null, null, 0, null, null, null, null));
+            el2.addExercise(v.getExManager().lists().get(1));
+            el2.addExercise(v.getExManager().lists().get(2));
+            tr = el2.getExerciseArray();
             oos.writeObject(el2);
             fos.close();
 
             fos = context.openFileOutput("20170617.bin", 0);
             oos = new ObjectOutputStream(fos);
             ExerciseList el3 = new ExerciseList(2017, 06, 17);
-            el3.addExercise(new Exercise("물구나무", 0, null, null, 0, null, null, null, null));
-            el3.addExercise(new Exercise("아몰랑", 0, null, null, 0, null, null, null, null));
+            el3.addExercise(v.getExManager().lists().get(2));
+            el3.addExercise(v.getExManager().lists().get(3));
+            tr = el3.getExerciseArray();
             oos.writeObject(el3);
             fos.close();
+
+            fos = context.openFileOutput("20170618.bin", 0);
+            oos = new ObjectOutputStream(fos);
+            ExerciseList el4 = new ExerciseList(2017, 06, 18);
+            el4.addExercise(v.getExManager().lists().get(3));
+            el4.addExercise(v.getExManager().lists().get(4));
+            tr = el4.getExerciseArray();
+            for(Exercise i : tr) {
+                Log.d("濡쒓렇?앹꽦", "el4: " + i.getName());
+            }
+            oos.writeObject(el4);
+            fos.close();
+
+            fos = context.openFileOutput("20170619.bin", 0);
+            oos = new ObjectOutputStream(fos);
+            ExerciseList el5 = new ExerciseList(2017, 06, 17);
+            el5.addExercise(v.getExManager().lists().get(4));
+            el5.addExercise(v.getExManager().lists().get(5));
+            tr = el5.getExerciseArray();
+            for(Exercise i : tr) {
+                Log.d("濡쒓렇?앹꽦", "el5: " + i.getName());
+            }
+            oos.writeObject(el5);
+            fos.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

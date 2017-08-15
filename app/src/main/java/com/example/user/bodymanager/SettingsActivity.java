@@ -1,16 +1,12 @@
 package com.example.user.bodymanager;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.SweepGradient;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
