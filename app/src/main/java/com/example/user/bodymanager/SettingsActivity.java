@@ -114,24 +114,20 @@ public class SettingsActivity extends BodygraphActivity {
     public void onClick(View view) {
         switch( view.getId() ) {
             case R.id.settings_male_btn:
-                if( maleButton.isChecked() ) {
-                    femaleButton.setChecked(false);
-                } else {
-                    maleButton.setChecked(true);
-                    femaleButton.setChecked(false);
-                }
+                maleButton.setChecked(true);
+                maleButton.setBackgroundDrawable(getDrawable(R.drawable.male_color));
+                femaleButton.setChecked(false);
+                femaleButton.setBackgroundDrawable(getDrawable(R.drawable.female_black));
                 break;
             case R.id.settings_female_btn:
-                if( femaleButton.isChecked() ) {
-                    maleButton.setChecked(false);
-                } else {
-                    maleButton.setChecked(false);
-                    femaleButton.setChecked(true);
-                }
+                maleButton.setChecked(false);
+                maleButton.setBackgroundDrawable(getDrawable(R.drawable.male_black));
+                femaleButton.setChecked(true);
+                femaleButton.setBackgroundDrawable(getDrawable(R.drawable.female_color));
                 break;
             case R.id.dialog_close:
                 int sGender = 0;
-                if ( femaleButton.isChecked() )
+                if (femaleButton.isChecked() )
                     sGender = 1;
                 String sHegiht = height.getText().toString();
                 String sWegiht = weight.getText().toString();
