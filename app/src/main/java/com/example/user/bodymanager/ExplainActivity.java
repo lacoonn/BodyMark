@@ -117,7 +117,7 @@ public class ExplainActivity extends Activity {
             adapter.addItem(ContextCompat.getDrawable(this, R.drawable.behind_neck_press3), true, ex.getSeq().get(2));
             adapter.addItem(ContextCompat.getDrawable(this, R.drawable.behind_neck_press4), true, ex.getSeq().get(3));
         }
-        else if(n.equals("아놀드 프레스 - 머신"))
+        else if(n.equals("아놀드 프레스"))
         {
             adapter.addItem(ContextCompat.getDrawable(this, R.drawable.anold_press1), true, ex.getSeq().get(0));
             adapter.addItem(ContextCompat.getDrawable(this, R.drawable.anold_press2), true, ex.getSeq().get(1));

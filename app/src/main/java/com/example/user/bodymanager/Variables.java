@@ -74,7 +74,6 @@ public class Variables extends Application {
     public void updateTodayExerciseList() {
         todayExerciseList.clearExerciseList();
         for(String i : SelectedExerciseList) {
-            //todayExerciseList.addExercise(exManager.searchName(i));
             todayExerciseList.addExercise(new Exercise(i));
         }
     }
@@ -148,8 +147,12 @@ public class Variables extends Application {
         return savedPreviousDamage;
     }
 
-    public void setsavedPreviousDamage(int[] damage) {
+    public void setsavedPreviousDamage(int[] damage, int day_passed) {
         //deep copy
-        this.savedPreviousDamage = (int[]) damage.clone();
+        //
+        for(int i = 0; i<damage.length; i++) {
+            damage[i] = damage[i] * (3 - day_passed) / 3;
+            this.savedPreviousDamage[i] += damage[i];
+        }
     }
 }

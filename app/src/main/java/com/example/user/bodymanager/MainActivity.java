@@ -101,14 +101,17 @@ public class MainActivity extends BodygraphActivity {
         applyPNG();
     }
 
+    @Override
+    protected void onDestroy()
+    {
+        v.saveTodayExerciseListToFile();
+        super.onDestroy();
+    }
 
 
     public void onClickExercise(View view) {
         Variables v = (Variables)getApplication();
-
         int id = view.getId();
-        Toast.makeText(this, "운동", Toast.LENGTH_SHORT).show();
-
     }
 
     //앱이 처음 시작할 때 저장된 오늘의 운동을 읽어오는 함수
@@ -119,7 +122,7 @@ public class MainActivity extends BodygraphActivity {
         Calendar date = Calendar.getInstance();
 
         //오늘날짜 파일 열기
-        String openFileName = String.format("%04d%02d%02d   .bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
+        String openFileName = String.format("%04d%02d%02d.bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
 
         try {
             //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
