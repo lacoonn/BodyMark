@@ -243,12 +243,12 @@ public abstract class BodygraphActivity extends Activity {
         ExerciseList exerciseList;
         Calendar date = Calendar.getInstance();
 
-        for(int i = 0;i<7;++i)
+        for(int i = 1 ;i <= 3; i++)//-1 일 전 날짜부터, 총 -7일까지 계산
         {
-            date.add(Calendar.DATE, -1); //-1 일 전 날짜부터, 총 -7일까지 계산
+            date.add(Calendar.DATE, -1); //하루 이전 날짜로 지정
 
             //해당 파일 열기
-            String openFileName = String.format("%04d%02d%02d   .bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
+            String openFileName = String.format("%04d%02d%02d.bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
 
             try {
                 //Toast.makeText(CalendarPopup.this, Variables.path + openFileName, Toast.LENGTH_SHORT).show();
@@ -258,13 +258,17 @@ public abstract class BodygraphActivity extends Activity {
                 exerciseList = (ExerciseList) ois.readObject();
                 //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
 
+
+                //임시로 arraylist 생성
+                ArrayList<String> tmp = new ArrayList<String>();
                 for(Exercise e : exerciseList.getExerciseArray())
                 {
-                    for(int j=0;j<e.getPart().size();++j)
-                        calculateDamage(e.getPart());
+                    tmp.add(e.getName());
                 }
+
+                calculateDamage(tmp);
                 //계산된 피로도를 임시로 저장
-                v.setsavedPreviousDamage(damage);
+                v.setsavedPreviousDamage(damage,i);
 
                 fis.close();
             } catch (FileNotFoundException e) {
@@ -275,7 +279,7 @@ public abstract class BodygraphActivity extends Activity {
                 e.printStackTrace();
             }
         }
-
+        damage = v.getSavedPreviousDamage().clone();
     }
 
     //근육 번호와 이름을 대응시키는 함수
