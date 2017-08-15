@@ -243,9 +243,8 @@ public abstract class BodygraphActivity extends Activity {
         ExerciseList exerciseList;
         Calendar date = Calendar.getInstance();
 
-        for(int i = 1 ;i <= 3; i++)//-1 일 전 날짜부터, 총 -7일까지 계산
+        for(int i = 1 ;i <= 4; i++)//-1 일 전 날짜부터, 총 -7일까지 계산
         {
-            date.add(Calendar.DATE, -1); //하루 이전 날짜로 지정
 
             //해당 파일 열기
             String openFileName = String.format("%04d%02d%02d.bin", date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
@@ -277,6 +276,8 @@ public abstract class BodygraphActivity extends Activity {
             }
         }
         damage = v.getSavedPreviousDamage().clone();
+
+        date.add(Calendar.DATE, -1); //하루 이전 날짜로 지정
     }
 
     //근육 번호와 이름을 대응시키는 함수

@@ -133,7 +133,6 @@ public class MainActivity extends BodygraphActivity {
             {
                 v.SelectExercise(e.getName());
             }
-
             fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
