@@ -132,11 +132,11 @@ public class MainActivity extends BodygraphActivity {
             exerciseList = (ExerciseList) ois.readObject();
             //Toast.makeText(CalendarPopup.this, "오브젝트인풋스트림에서 오브젝트 추출", Toast.LENGTH_SHORT).show();
 
+            v.getSelectedExerciseList().clear();
             for(Exercise e : exerciseList.getExerciseArray())
             {
                 v.SelectExercise(e.getName());
             }
-
             fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

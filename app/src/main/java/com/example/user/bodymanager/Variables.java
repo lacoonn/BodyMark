@@ -151,7 +151,7 @@ public class Variables extends Application {
         //deep copy
         //
         for(int i = 0; i<damage.length; i++) {
-            damage[i] = damage[i] * (3 - day_passed) / 3;
+            damage[i] = damage[i] * (4 - day_passed) / 4;
             this.savedPreviousDamage[i] += damage[i];
         }
     }
