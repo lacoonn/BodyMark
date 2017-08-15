@@ -97,6 +97,7 @@ public class MainActivity extends BodygraphActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        calculateDamage(v.getSelectedExerciseList());
         applyPNG();
     }
 

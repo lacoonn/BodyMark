@@ -2,6 +2,7 @@ package com.example.user.bodymanager;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -161,7 +162,7 @@ public abstract class BodygraphActivity extends Activity {
             in = new BufferedReader(new FileReader(Variables.path + "info.txt"));
 
             if (Integer.parseInt(in.readLine()) == 0)
-                v.gender = 7;
+                v.gender = 0;
             else
                 v.gender = 10;
 
@@ -181,9 +182,10 @@ public abstract class BodygraphActivity extends Activity {
         for(int i=0 ; i < bodygraphDrawable.length ; ++i) {
             ImageView imgview = (ImageView)findViewById(bodygraphId[i]);
 
-            if(damage[i] <= 170)
+            Log.d("damage", "" + damage[i]);
+            if(damage[i] <= 70)
                 imgview.setImageResource(bodygraphDrawable[i]);
-            else if(damage[i] <= 340)
+            else if(damage[i] <= 100)
                 imgview.setImageResource(bodygraphDrawable2[i]);
             else
                 imgview.setImageResource(bodygraphDrawable3[i]);
@@ -233,7 +235,7 @@ public abstract class BodygraphActivity extends Activity {
                 ArrayList<String> tmplist = ex.getPart();
 
                 for(String p : tmplist) {
-                    damage[mapName(p)] += (result - 15) * 510 / 105;
+                    damage[mapName(p)] += result;
                 }
             }
     }

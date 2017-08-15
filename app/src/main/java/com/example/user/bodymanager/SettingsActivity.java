@@ -60,9 +60,11 @@ public class SettingsActivity extends BodygraphActivity {
                 str = in.readLine();
                 if(str.equals("0")) {
                     maleButton.setChecked(true);
+                    maleButton.setBackgroundDrawable(getDrawable(R.drawable.male_color));
                 }
                 else {
                     femaleButton.setChecked(true);
+                    femaleButton.setBackgroundDrawable(getDrawable(R.drawable.female_color));
                 }
                 str = in.readLine();
                 height.setText(str);
