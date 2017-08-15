@@ -18,13 +18,15 @@ android:orientation="horizontal">
         android:layout_centerHorizontal="true">
 
         <CheckBox
-            android:id="@+id/exerciseitem_textview"
+            android:id="@+id/exerciseitem_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
 
         <Button

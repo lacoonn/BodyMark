@@ -59,7 +59,8 @@ public class ExplainActivity extends Activity {
                 part = part + ", ";
         }
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 부위 : "+ part);
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 부위");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, part);
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 개요");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, ex.getSimple());
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "운동 순서");

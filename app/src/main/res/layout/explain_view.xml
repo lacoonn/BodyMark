@@ -15,6 +15,6 @@
         android:layout_height="match_parent"
         android:text="Sequence"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 </LinearLayout>
