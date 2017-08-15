@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="500dp"
     android:layout_gravity="center"
+    android:background="#ffffff"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#ffffff"
     android:weightSum="1">
 
     <TextView
-        android:text="개인 정보 설정"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textAlignment="center"
         android:layout_weight="0.14"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="개인 정보 설정"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,26 +36,31 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="성별"
-                android:textSize="20dp"
+                android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
-                android:textAlignment="center"/>
+                android:textSize="20dp" />
 
             <ToggleButton
                 android:id="@+id/settings_male_btn"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/male_black"
                 android:checked="false"
-                android:textOn="남자"
-                android:textOff="남자"
-                android:onClick="onClick"/>
+                android:onClick="onClick"
+                android:textOff=""
+                android:textOn="" />
+
             <ToggleButton
                 android:id="@+id/settings_female_btn"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/female_black"
                 android:checked="false"
-                android:textOn="여자"
-                android:textOff="여자"
-                android:onClick="onClick"/>
+                android:onClick="onClick"
+                android:textOff=""
+                android:textOn="" />
 
         </LinearLayout>
 
@@ -76,16 +81,17 @@
                 android:id="@+id/settings_height"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbox"
                 android:inputType="text"
                 android:textAlignment="center"
-                android:textColor="@color/orange"
-                android:background="@drawable/editbox"/>
+                android:textColor="@color/orange" />
+
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:text="cm"
-                android:textColor="@color/colorPrimary"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
 
@@ -106,16 +112,17 @@
                 android:id="@+id/settings_weight"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbox"
                 android:inputType="text"
                 android:textAlignment="center"
-                android:textColor="@color/orange"
-                android:background="@drawable/editbox"/>
+                android:textColor="@color/orange" />
+
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:text="kg"
-                android:textColor="@color/colorPrimary"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
 
@@ -136,29 +143,29 @@
                 android:id="@+id/settings_age"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbox"
                 android:inputType="text"
                 android:textAlignment="center"
-                android:textColor="@color/orange"
-                android:background="@drawable/editbox"/>
+                android:textColor="@color/orange" />
+
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:text="age"
-                android:textColor="@color/colorPrimary"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/dialog_close"
-        android:text="완료"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
         android:background="#a7a7a7"
         android:onClick="onClick"
-        />
+        android:text="완료" />
 
 </LinearLayout>
