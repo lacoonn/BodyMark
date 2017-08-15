@@ -67,7 +67,8 @@ public class ExplainActivity extends Activity {
         printPicture(name, part);
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "주의 사항");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, ex.getTip());
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "난이도 : "+ transTired(ex.getTired()));
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, "난이도");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.dummy), false, transTired(ex.getTired()));
 
     }
 

@@ -21,38 +21,44 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_margin="5dp"
-        android:background="@color/white"
-        android:layout_weight="1.07">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
         <ListView
-        android:id="@+id/listview_explain"
-        android:layout_width="match_parent"
-        android:layout_height="440dp"
-        android:background="#aaa" />
+            android:id="@+id/listview_explain"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_weight="0.9"
+            android:background="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:padding="10dp">
-
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/play"
-            android:onClick="onClick"/>
-
-        <TextView
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:text="동영상 보기"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:layout_margin="10dp"
+            android:layout_weight="0.1"
+            android:background="#aaa"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_explain3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/play"
+                android:onClick="onClick" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="동영상 보기"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
