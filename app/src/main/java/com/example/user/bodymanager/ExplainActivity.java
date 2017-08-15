@@ -286,6 +286,8 @@ public class ExplainActivity extends Activity {
             return "승모근";
         else if(n.equals("back3"))
             return "능형근";
+        else if(n.equals("waist1"))
+            return "기립근";
         else if(n.equals("abdomen1"))
             return "복직근";
         else if(n.equals("abdomen2"))
