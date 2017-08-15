@@ -293,7 +293,7 @@ public abstract class BodygraphActivity extends Activity {
         else if(str.equals("shoulder2"))
             return 8;
         else if(str.equals("uarm1"))
-            return 17;
+            return 16;
         else if(str.equals("uarm2"))
             return 0;
         else if(str.equals("larm1"))
@@ -303,7 +303,7 @@ public abstract class BodygraphActivity extends Activity {
         else if(str.equals("back1"))
             return 13;
         else if(str.equals("back2"))
-            return 16;
+            return 8;
         else if(str.equals("back3"))
             return 14;
         else if(str.equals("waist1"))
@@ -320,6 +320,8 @@ public abstract class BodygraphActivity extends Activity {
             return 6;
         else if(str.equals("leg4"))
             return 10;
+        else if(str.equals("leg5"))
+            return 17;
         else
             return 9;   // 안쓰는 부위
     }
