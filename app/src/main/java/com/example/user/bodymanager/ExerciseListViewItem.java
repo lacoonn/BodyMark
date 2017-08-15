@@ -9,7 +9,7 @@ public class ExerciseListViewItem {
     private String titleStr ;
 
     public void setTitle(String title) {
-        titleStr = title ;
+        titleStr = title;
     }
 
     public String getTitle() {

@@ -34,10 +34,14 @@ public class MainActivity extends BodygraphActivity {
 //=========================================|
 
         loadTodayExercise();
+        v.updateMainListView();
         setMuscleExercise();
         readPreviousDamage();
         applyPNG();
 
+        v.checkBoxBody = new boolean[v.getMeManager().searchPart("body").size()];
+        v.checkBoxArms = new boolean[v.getMeManager().searchPart("arm").size()];
+        v.checkBoxLegs = new boolean[v.getMeManager().searchPart("leg").size()];
     }
 
     public void onClick(View view) {
@@ -49,22 +53,22 @@ public class MainActivity extends BodygraphActivity {
         switch (view.getId()) {
             case R.id.main_btnBody:
                 //setBodygraphColor(R.id.main_bodygraph_chest, "bodygraph_" + R.id.main_bodygraph_chest, R.drawable.chest_yellow);
-                intent1.putExtra("data","몸 운동");
+                intent1.putExtra("part","body");
                 startActivity(intent1);
                 break;
             case R.id.main_btnLeftarm:
                 //setBodygraphColor(R.id.main_bodygraph_biceps, "bodygraph_" + R.id.main_bodygraph_biceps, R.drawable.biceps_yellow);
-                intent1.putExtra("data","팔 운동");
+                intent1.putExtra("part","arm");
                 startActivity(intent1);
                 break;
             case R.id.main_btnRightarm:
                 //setBodygraphColor(R.id.main_bodygraph_triceps, "bodygraph_" + R.id.main_bodygraph_triceps, R.drawable.triceps_yellow);
-                intent1.putExtra("data","팔 운동");
+                intent1.putExtra("part","arm");
                 startActivity(intent1);
                 break;
             case R.id.main_btnLowerbody:
                 //setBodygraphColor(R.id.main_bodygraph_shoulders, "bodygraph_" + R.id.main_bodygraph_shoulders, R.drawable.shoulders_yellow);
-                intent1.putExtra("data","다리 운동");
+                intent1.putExtra("part","leg");
                 startActivity(intent1);
                 break;
             case R.id.main_btnCalendar:
@@ -89,7 +93,6 @@ public class MainActivity extends BodygraphActivity {
     protected void onPause()
     {
         super.onPause();
-
     }
 
     @Override

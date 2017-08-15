@@ -35,7 +35,13 @@ public class Variables extends Application {
 
     ListView todayListView;
     TodayListViewAdapter todayAdapter;
-    ExerciseListViewAdapter exerciseAdapter;
+
+    ListView exerciseListView;
+    ExerciseActivity.ExerciseListViewAdapter exerciseAdapter;
+
+    boolean[] checkBoxBody;
+    boolean[] checkBoxArms;
+    boolean[] checkBoxLegs;
 
     static public int gender;
     static public int age;
@@ -114,6 +120,27 @@ public class Variables extends Application {
         updateTodayExerciseList();
         saveTodayExerciseListToFile();
     }
+
+    //ExerciseActivity의 운동 선택창 세팅
+    public void updateExerciseListView(ArrayList<String> exerciseName, String Part) {
+        //checkBox에 해당하는 이름을 인자로 받는다
+
+        // ExerciseListView에  데이터를 추가합니다------------------------------------------
+        exerciseAdapter.clearItem();
+        for(String i : exerciseName) {
+            exerciseAdapter.addItem(i);
+        }
+
+        // 체크 여부 상태 로딩
+        if(Part.equals("body"))
+            exerciseAdapter.checkBoxState = checkBoxBody;
+        else if(Part.equals("arm"))
+            exerciseAdapter.checkBoxState = checkBoxArms;
+        else if(Part.equals("leg"))
+            exerciseAdapter.checkBoxState = checkBoxLegs;
+
+        exerciseAdapter.notifyDataSetChanged();
+    }   //oncreate의 운동.txt 읽어오는 구간에 ArrayList<String>을 추가하여 모든 운동을 다 읽으면 인자(exerciseName)로 준다.
 
     //------------------------- getter & setter ---------------------
 

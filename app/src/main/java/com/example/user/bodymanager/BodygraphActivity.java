@@ -143,7 +143,7 @@ public abstract class BodygraphActivity extends Activity {
     }
 
     public void changeVisibility() {
-        for (int i = R.id.main_bodygraph_body1; i < R.id.main_bodygraph_end; i++) {
+        for (int i : bodygraphId) {
             imageView = (ImageView) findViewById(i);
             if (imageView.getVisibility() == View.VISIBLE) {
                 imageView.setVisibility(View.INVISIBLE);
@@ -319,43 +319,48 @@ public abstract class BodygraphActivity extends Activity {
             return 9;   // 안쓰는 부위
     }
 
+    //=================================================================================================================================== 운동/ 근육 추가시 하드코딩 필요한 부분
     protected static void loadingMuscleExercise(MuscleExerciseManager meManager,ExerciseManager exManager)
     {
         ArrayList<Exercise> exlist = new ArrayList<Exercise>();
         exlist = exManager.lists();
 
-        meManager.add(addingMuscleExercise("chest1", exlist));
-        meManager.add(addingMuscleExercise("shoulder1", exlist));
-        meManager.add(addingMuscleExercise("shoulder2", exlist));
-        meManager.add(addingMuscleExercise("uarm1", exlist));
-        meManager.add(addingMuscleExercise("uarm2", exlist));
-        meManager.add(addingMuscleExercise("larm1", exlist));
-        meManager.add(addingMuscleExercise("larm2", exlist));
-        meManager.add(addingMuscleExercise("back1", exlist));
-        meManager.add(addingMuscleExercise("back2", exlist));
-        meManager.add(addingMuscleExercise("back3", exlist));
-        meManager.add(addingMuscleExercise("waist1", exlist));
-        meManager.add(addingMuscleExercise("abdomen1", exlist));
-        meManager.add(addingMuscleExercise("abdomen2", exlist));
-        meManager.add(addingMuscleExercise("leg1", exlist));
-        meManager.add(addingMuscleExercise("leg2", exlist));
-        meManager.add(addingMuscleExercise("leg3", exlist));
-        meManager.add(addingMuscleExercise("leg4", exlist));
-        meManager.add(addingMuscleExercise("leg5", exlist));
+        meManager.add(addingMuscleExercise("chest1", "body", exlist));  //(muscle, part, exlist)
+        meManager.add(addingMuscleExercise("shoulder1", "body", exlist));
+        meManager.add(addingMuscleExercise("shoulder2", "body", exlist));
+        meManager.add(addingMuscleExercise("uarm1", "arm", exlist));
+        meManager.add(addingMuscleExercise("uarm2", "arm", exlist));
+        meManager.add(addingMuscleExercise("larm1", "arm", exlist));
+        meManager.add(addingMuscleExercise("larm2", "arm", exlist));
+        meManager.add(addingMuscleExercise("back1", "body", exlist));
+        meManager.add(addingMuscleExercise("back2", "body", exlist));
+        meManager.add(addingMuscleExercise("back3", "body", exlist));
+        meManager.add(addingMuscleExercise("waist1", "body", exlist));
+        meManager.add(addingMuscleExercise("abdomen1", "body", exlist));
+        meManager.add(addingMuscleExercise("abdomen2", "body", exlist));
+        meManager.add(addingMuscleExercise("leg1", "leg", exlist));
+        meManager.add(addingMuscleExercise("leg2", "leg", exlist));
+        meManager.add(addingMuscleExercise("leg3", "leg", exlist));
+        meManager.add(addingMuscleExercise("leg4", "leg", exlist));
+        meManager.add(addingMuscleExercise("leg5", "leg", exlist));
+
     }
-    protected static MuscleExercise addingMuscleExercise(String part ,ArrayList<Exercise> exlist)
+    //==================================================================================================================================================
+    protected static MuscleExercise addingMuscleExercise(String muscle, String part, ArrayList<Exercise> exlist)
     {
         MuscleExercise me = new MuscleExercise();
         int i, j, count = 0;
         ArrayList<Exercise> templist = new ArrayList<Exercise>();
         ArrayList<String> temppart = new ArrayList<String>();
 
-        me.setName(part);
+        me.setMuscle(muscle);
+        me.setPart(part);
+
         for(i=0;i<exlist.size();i++)
         {
             temppart = exlist.get(i).getPart();
             for(j=0;j<exlist.get(i).getPartNum();j++) {
-                if (temppart.get(j).equals(part)) {
+                if (temppart.get(j).equals(muscle)) {
                     templist.add(exlist.get(i));
                     count++;
                     break;

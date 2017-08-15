@@ -28,7 +28,7 @@ public class CalenderActivity extends BodygraphActivity {
         context = this;
         v = (Variables) getApplication();
 
-        // ?뚯뒪?몃? ?꾪빐 ?뚯씪???앹꽦?쒕떎
+        // for test file
         try {
             FileOutputStream fos = context.openFileOutput("20170615.bin", 0);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -36,11 +36,6 @@ public class CalenderActivity extends BodygraphActivity {
             el1.addExercise(v.getExManager().lists().get(0));
             el1.addExercise(v.getExManager().lists().get(1));
             ArrayList<Exercise> tr = el1.getExerciseArray();
-            for(Exercise i : tr) {
-                Log.d("濡쒓렇?앹꽦", "el1: " + i.getName());
-            }
-            //el1.addExercise(new Exercise("?몄떆??, 0, null, null, 0, null, null, null, null));
-            //el1.addExercise(new Exercise("?쀫じ?쇱쑝?ㅺ린", 0, null, null, 0, null, null, null, null));
             oos.writeObject(el1);
             fos.close();
 
@@ -50,11 +45,6 @@ public class CalenderActivity extends BodygraphActivity {
             el2.addExercise(v.getExManager().lists().get(1));
             el2.addExercise(v.getExManager().lists().get(2));
             tr = el2.getExerciseArray();
-            for(Exercise i : tr) {
-                Log.d("濡쒓렇?앹꽦", "el2: " + i.getName());
-            }
-            //el2.addExercise(new Exercise("?뚮옲??, 0, null, null, 0, null, null, null, null));
-            //el2.addExercise(new Exercise("踰ㅼ튂", 0, null, null, 0, null, null, null, null));
             oos.writeObject(el2);
             fos.close();
 
@@ -64,11 +54,6 @@ public class CalenderActivity extends BodygraphActivity {
             el3.addExercise(v.getExManager().lists().get(2));
             el3.addExercise(v.getExManager().lists().get(3));
             tr = el3.getExerciseArray();
-            for(Exercise i : tr) {
-                Log.d("濡쒓렇?앹꽦", "el3: " + i.getName());
-            }
-            //el3.addExercise(new Exercise("臾쇨뎄?섎Т", 0, null, null, 0, null, null, null, null));
-            //el3.addExercise(new Exercise("?꾨ぐ??, 0, null, null, 0, null, null, null, null));
             oos.writeObject(el3);
             fos.close();
 
